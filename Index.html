@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfell Harbor - A Personal Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="homepage-body text-gray-800">
+
+    <!-- Header & Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+              <span>Starfell</span>
+              <span class="block mt-[-0.5em] ml-4">Harbor</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                <div class="relative dropdown">
+                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                        <span id="dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                        <a href="cyber/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                        <a href="tech/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                        <a href="personal/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+            <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-100 rounded">Home</a>
+             <div class="relative">
+                <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                    <span id="mobile-dropdown-text">Blogs</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="mobile-blogs-menu" class="hidden pl-4">
+                    <a href="cyber/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                    <a href="tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                    <a href="personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                </div>
+            </div>
+            <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="w-full pt-24 pb-8 px-4 sm:px-6 lg:px-8">
+            <div class="container mx-auto">
+                <div class="relative aspect-[21/8.5] w-full rounded-2xl overflow-hidden shadow-xl">
+                    <div class="absolute inset-0 bg-cover bg-center image-zoom" style="background-image: url('assets/images/home_section_image.jpg');"></div>
+                    <img src="assets/images/home_section_image.jpg" class="hidden" alt="" onerror="this.previousElementSibling.style.backgroundImage='url(https://placehold.co/1920x1080/a3bfed/ffffff?text=Image+Not+Found)'">
+                    <div class="absolute top-0 left-0 w-full h-full" style="background-image: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));"></div>
+                    <div class="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8">
+                        <h1 class="text-8xl sm:text-9xl md:text-[10rem] font-black text-white drop-shadow-xl leading-none text-left">
+                            <div id="anim-text-1">Starfell</div>
+                            <div id="anim-text-2">Harbor</div>
+                        </h1>
+                    </div>
+                    <div class="absolute bottom-0 right-0 p-6 sm:p-8 md:p-12">
+                        <p class="text-white text-lg font-medium drop-shadow-md">write the mid out</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UPDATED: This div now wraps all sections below the hero -->
+        <div class="rounded-t-2xl overflow-hidden">
+            <div class="gradient-section">
+                <!-- About & Blog Types Section -->
+                <section id="about" class="w-full py-24 px-4 sm:px-6 lg:px-8 relative">
+                    <div class="container mx-auto text-center">
+                        <div class="relative inline-block">
+                             <!-- Decorative Doodles -->
+                            <div class="deco-doodle" style="top: -50%; left: -20%; width: 6rem; height: 6rem;">
+                                <svg viewBox="0 0 100 100" class="stroke-current fill-none"><path d="M20,30 Q40,10 60,30 T100,30" stroke-width="2"></path></svg>
+                            </div>
+                             <div class="deco-doodle" style="top: -30%; right: -25%; width: 4rem; height: 4rem; animation-delay: 0.2s;">
+                                <svg viewBox="0 0 100 100" class="stroke-current fill-none"><path d="M20 80 C40 20, 60 20, 80 80" stroke-width="2"></path></svg>
+                            </div>
+                            <p class="font-stylish text-3xl md:text-4xl lg:text-5xl max-w-4xl mx-auto leading-relaxed text-gray-800 fade-in-up" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.1);">
+                                Here I share my blogs that are about cyber walkthroughs, tech related topics, and some personal thoughts.
+                            </p>
+                        </div>
+
+                        <!-- Blog Category Cards -->
+                        <div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                            <!-- Cyber Card -->
+                            <a href="cyber/index.html" class="category-card fade-in-up">
+                                <h3 class="text-3xl font-bold">Cyber Writings</h3>
+                                <p class="mt-2 text-gray-600">Walkthroughs, analyses, and deep dives into the world of cybersecurity.</p>
+                                <span class="arrow">&rarr;</span>
+                            </a>
+                            <!-- Tech Card -->
+                            <a href="tech/index.html" class="category-card fade-in-up" style="animation-delay: 0.2s;">
+                                <h3 class="text-3xl font-bold">Tech Musings</h3>
+                                <p class="mt-2 text-gray-600">Exploring the latest in hardware, software, and future technology trends.</p>
+                                <span class="arrow">&rarr;</span>
+                            </a>
+                            <!-- Personal Card -->
+                            <a href="personal/index.html" class="category-card fade-in-up" style="animation-delay: 0.4s;">
+                                <h3 class="text-3xl font-bold">Personal Thoughts</h3>
+                                <p class="mt-2 text-gray-600">Reflections on life, learning, and the journey in between.</p>
+                                <span class="arrow">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Me Section -->
+                <section id="about-me" class="w-full px-4 sm:px-6 lg:px-8">
+                    <div class="about-me-container rounded-2xl overflow-hidden">
+                        <div class="about-me-sticky-wrapper">
+                            <div id="about-me-bg-text" class="about-me-background-text font-stylish">About Me</div>
+                            <div id="about-me-content" class="about-me-content flex items-center justify-center">
+                                <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-8">
+                                    <div class="flex justify-center">
+                                        <img src="https://placehold.co/400x400/7B87BF/FFFFFF?text=Profile+Pic" alt="Author Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 shadow-2xl border-8 border-white">
+                                    </div>
+                                    <div class="text-center md:text-left">
+                                         <h2 class="text-4xl font-bold text-gray-800 mb-4">A Little About Me</h2>
+                                        <p class="text-gray-700 leading-relaxed text-lg">
+                                            Welcome! I'm the voice behind Starfell Harbor. By day, I'm a cybersecurity enthusiast navigating the digital world, and by night, I'm a tinkerer exploring the latest in tech. This blog is my space to document my journey, share what I'm learning, and connect with fellow curious minds. Thanks for stopping by!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer Section -->
+                <footer id="contact" class="w-full h-screen relative overflow-hidden flex flex-col p-4 sm:p-6 lg:px-8">
+                    <div class="container mx-auto flex-grow flex items-center">
+                        <div class="w-1/2">
+                            <h2 class="text-8xl font-bold font-stylish leading-tight" style="color: var(--logo-color);">Thank you for visiting</h2>
+                        </div>
+                        <div class="w-1/2 flex justify-end">
+                             <div class="max-w-md w-full">
+                                <h2 class="text-4xl font-bold mb-4">Enjoy the read?</h2>
+                                <p class="text-gray-600 mb-4">If you liked my work, feel free to leave your name below. It's a simple way to show your appreciation!</p>
+                                <form name="appreciation" method="POST" data-netlify="true" class="flex flex-col gap-4">
+                                    <input type="text" name="visitor_name" placeholder="Enter your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <button type="submit" class="w-full subscribe-btn text-white font-semibold py-3 px-6 rounded-lg">Send Appreciation</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container mx-auto" style="padding-bottom: var(--footer-bottom-padding);">
+                        <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                            <img src="assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8">
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-gray-600 text-sm">&copy; 2025 Starfell Harbor. All Rights Reserved.</p>
+                            <p class="text-gray-600 text-sm">Thank You</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

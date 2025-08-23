@@ -1,0 +1,379 @@
+/* ===================================================================
+   1. GLOBAL STYLES & VARIABLES
+   - These styles apply to the entire website.
+   =================================================================== */
+:root {
+    /* Colors */
+    --logo-color: #7B87BF;
+    --subscribe-bg-color: #111827;
+    --subscribe-hover-bg-color: #374151;
+
+    /* Homepage Specific Colors */
+    --deco-shape-color: #2c3e50;
+    --page-gradient-start: #E9E7F5; 
+    --about-site-gradient-start: #EEF1FB;
+    --about-me-bg-color: #F5F5DC;
+    --about-me-text-color: #800000;
+    
+    /* Adjustable Layout Variables */
+    --navbar-padding: 0.8rem;
+    --logo-font-size: 2.5rem;
+    --footer-divider-margin-top: 4rem;
+    --footer-divider-margin-bottom: 1rem;
+    --footer-bottom-padding: 1.5rem;
+    --footer-star-margin: 2rem;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* Default light gray for all pages */
+}
+
+.font-stylish { font-family: 'Playfair Display', serif; }
+.font-logo { 
+    font-family: 'Qwitcher Grypen', cursive; 
+    font-size: var(--logo-font-size);
+    font-weight: 700;
+}
+
+.js-logo-fade {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.js-logo-fade.visible {
+    opacity: 1;
+}
+
+
+/* ===================================================================
+   2. SHARED COMPONENTS (Navbar & Footer)
+   - Styles for elements that appear on multiple pages.
+   =================================================================== */
+
+/* --- Navbar --- */
+#navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding-top: var(--navbar-padding);
+    padding-bottom: var(--navbar-padding);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.dropdown-menu { 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+.dropdown { 
+    padding-bottom: 1rem; 
+    margin-bottom: -1rem; 
+}
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu { 
+    opacity: 1; 
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.subscribe-btn {
+    background-color: var(--subscribe-bg-color);
+    transition: background-color 0.3s ease;
+}
+.subscribe-btn:hover { 
+    background-color: var(--subscribe-hover-bg-color); 
+}
+
+/* --- Footer --- */
+@keyframes rotate-star {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #d1d5db; /* gray-300 */
+}
+.rotating-star {
+    margin: 0 var(--footer-star-margin);
+    animation: rotate-star 10s linear infinite;
+}
+
+
+/* ===================================================================
+   3. HOMEPAGE-ONLY STYLES
+   - Styles specific to index.html.
+   =================================================================== */
+.homepage-body {
+    background-color: #ffffff; /* Homepage has a white background */
+}
+
+.gradient-section {
+    background-image: linear-gradient(to bottom, var(--about-site-gradient-start), #ffffff);
+}
+
+.category-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: left;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.category-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-color: white;
+}
+.category-card .arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--logo-color);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+.category-card:hover .arrow {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+/* --- Animations --- */
+.js-hero-text {
+    opacity: 0;
+}
+
+@keyframes random-fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: random-fade-up 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes zoom-in {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.image-zoom { 
+    animation: zoom-in 2s ease-out forwards; 
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-up.visible { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+@keyframes doodle-anim {
+    0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.deco-doodle {
+    opacity: 0;
+    position: absolute;
+    color: var(--deco-shape-color);
+    stroke-width: 2;
+}
+.deco-doodle.visible {
+    animation: doodle-anim 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+/* --- About Me Section --- */
+.about-me-container {
+    position: relative;
+    height: 110vh;
+}
+.about-me-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+.about-me-background-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18vw;
+    font-weight: 900;
+    color: var(--about-me-text-color);
+    z-index: 1;
+    transition: opacity 0.3s ease-out, filter 0.3s ease-out;
+}
+.about-me-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+
+/* ===================================================================
+   4. BLOG INDEX PAGE STYLES
+   - Styles for the Cyber, Tech, and Personal index pages.
+   =================================================================== */
+
+/* --- Cyber Page Glitch Effect --- */
+.glitch-wrapper {
+    display: block; 
+    position: relative;
+}
+.glitch {
+    position: relative;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease-in-out;
+}
+.text-link:hover .glitch {
+    color: var(--logo-color);
+}
+.glitch::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f8fafc;
+    overflow: hidden;
+    opacity: 0;
+}
+.text-link:hover .glitch::before {
+    animation: glitch-anim-1 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: #ef4444; /* Glitch color */
+    opacity: 0.8;
+    left: -2px;
+}
+@keyframes glitch-anim-1 {
+    0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
+    10% { clip-path: polygon(0 72%, 100% 72%, 100% 78%, 0 78%); }
+    20% { clip-path: polygon(0 45%, 100% 45%, 100% 49%, 0 49%); }
+    30% { clip-path: polygon(0 92%, 100% 92%, 100% 99%, 0 99%); }
+    40% { clip-path: polygon(0 15%, 100% 15%, 100% 19%, 0 19%); }
+    50% { clip-path: polygon(0 55%, 100% 55%, 100% 59%, 0 59%); }
+    60% { clip-path: polygon(0 33%, 100% 33%, 100% 39%, 0 39%); }
+    70% { clip-path: polygon(0 82%, 100% 82%, 100% 88%, 0 88%); }
+    80% { clip-path: polygon(0 40%, 100% 40%, 100% 44%, 0 44%); }
+    90% { clip-path: polygon(0 65%, 100% 65%, 100% 69%, 0 69%); }
+    100% { clip-path: polygon(0 22%, 100% 22%, 100% 28%, 0 28%); }
+}
+
+/* --- Tech & Personal Page Title Styles --- */
+.blog-title, .personal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    line-height: 2.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+.text-link:hover .blog-title, .text-link:hover .personal-title {
+    color: var(--logo-color);
+}
+
+
+/* ===================================================================
+   5. BLOG POST PAGE STYLES
+   - Styles for individual blog articles (e.g., blog1.html).
+   =================================================================== */
+.blog-content {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #374151;
+}
+.blog-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #111827;
+}
+.blog-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+.blog-content p {
+    margin-bottom: 1.5rem;
+}
+.blog-content a {
+    color: var(--logo-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+.blog-content a:hover {
+    color: #5a67a0;
+}
+.blog-content blockquote {
+    border-left: 4px solid var(--logo-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #4b5563;
+}
+.blog-content pre {
+    background-color: #1f2937;
+    color: #d1d5db;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 2rem 0;
+}
+.blog-content code {
+    font-family: 'Source Code Pro', monospace;
+}
+.blog-content figure {
+    margin: 3rem 0;
+}
+.blog-content figcaption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.75rem;
+}

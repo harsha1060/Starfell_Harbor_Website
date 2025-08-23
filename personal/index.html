@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Writings - Starfell Harbor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <!-- Header & Navbar -->
+    <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+            <span>Starfell</span>
+            <span class="block mt-[-0.5em] ml-4">Harbor</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="../index.html#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                <div class="relative dropdown">
+                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                        <span id="dropdown-text">Blogs</span> <!-- Add the span with the ID here -->
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                        <a href="../cyber/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                        <a href="../tech/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                        <a href="../personal/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+            <a href="../index.html#home" class="block py-2 px-4 text-sm hover:bg-gray-100 rounded">Home</a>
+             <div class="relative">
+                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                        <span id="dropdown-text">Blogs</span> <!-- Add the span with the ID here -->
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>                <div id="mobile-blogs-menu" class="hidden pl-4">
+                    <a href="../cyber/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                    <a href="../tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                    <a href="../personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                </div>
+            </div>
+            <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="py-24 text-center">
+            <div class="container mx-auto px-4">
+                <h1 class="text-5xl md:text-7xl font-bold font-stylish text-gray-900">Personal Writings</h1>
+                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">A space for reflections, life experiences, and the thoughts that wander in between the lines of code and security protocols.</p>
+            </div>
+        </section>
+
+        <!-- Blog Post List -->
+        <section class="pb-24">
+            <div class="container mx-auto px-4">
+                <div class="border-t border-gray-300">
+                    
+                    <!-- Blog Item 1 -->
+                    <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
+                        <div class="w-full md:w-1/3 lg:w-1/4">
+                            <div class="overflow-hidden rounded-lg">
+                                <img src="https://placehold.co/600x400/f5f5dc/800000?text=Post+Image" alt="Blog Post Image" class="blog-image w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <a href="blogs/blog1.html" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
+                            <p class="text-sm text-gray-500 mb-2">DEC 10, 2024</p>
+                            <h3 class="personal-title">Finding Focus in a Distracted World</h3>
+                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">My personal journey with digital minimalism and strategies I've used to reclaim my attention span.</p>
+                        </a>
+                    </div>
+
+                    <!-- Blog Item 2 -->
+                    <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
+                        <div class="w-full md:w-1/3 lg:w-1/4">
+                            <div class="overflow-hidden rounded-lg">
+                                <img src="https://placehold.co/600x400/e9e7f5/333333?text=Post+Image" alt="Blog Post Image" class="blog-image w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <a href="#" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
+                            <p class="text-sm text-gray-500 mb-2">NOV 18, 2024</p>
+                            <h3 class="personal-title">Lessons Learned from a Failed Side Project</h3>
+                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">An honest look at a project that didn't work out, and why I consider it one of my most valuable experiences.</p>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Item 3 -->
+                    <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
+                        <div class="w-full md:w-1/3 lg:w-1/4">
+                            <div class="overflow-hidden rounded-lg">
+                                <img src="https://placehold.co/600x400/fff1f2/800000?text=Post+Image" alt="Blog Post Image" class="blog-image w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <a href="#" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
+                            <p class="text-sm text-gray-500 mb-2">OCT 01, 2024</p>
+                            <h3 class="personal-title">The Imposter Syndrome in Tech</h3>
+                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">Navigating feelings of self-doubt in a fast-paced industry and the importance of community.</p>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- NEW: Sign-off text -->
+                <div class="text-center pt-16">
+                    <p class="font-stylish text-2xl text-gray-600">That’s all for now, sailor! — watch out for next week’s blog.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- UPDATED FOOTER SECTION -->
+    <footer id="contact" style="padding-top: var(--footer-divider-margin-top); padding-bottom: var(--footer-bottom-padding);">
+        <div class="container mx-auto px-4">
+            <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                <img src="../assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
+            </div>
+            <div class="flex justify-between items-center">
+                <p class="text-gray-600 text-sm">&copy; 2025 Starfell Harbor. All Rights Reserved.</p>
+                <a href="../index.html#home" class="text-gray-600 hover:text-gray-900 text-sm">Back to Home</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
