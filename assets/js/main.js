@@ -1,13 +1,12 @@
 /* ===================================================================
-   Starfell Harbor - Main JavaScript File
-   =================================================================== */
+    Starfell Harbor - Main JavaScript File
+    =================================================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
 
     /* ===================================================================
-       1. SHARED FUNCTIONALITY (Runs on all pages)
-       - Mobile menu and dropdown logic.
-       =================================================================== */
+        1. SHARED FUNCTIONALITY (Runs on all pages)
+        =================================================================== */
     
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -45,12 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Logic to update the dropdown text based on the current page
     const pagePath = window.location.pathname;
     const dropdownTextElement = document.getElementById('dropdown-text');
     const mobileDropdownTextElement = document.getElementById('mobile-dropdown-text');
 
-    let currentPageName = 'Blogs'; // Default
+    let currentPageName = 'Blogs';
     if (pagePath.includes('/cyber/')) {
         currentPageName = 'Cyber';
     } else if (pagePath.includes('/tech/')) {
@@ -66,46 +64,47 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileDropdownTextElement.textContent = currentPageName;
     }
 
-    // Smoothly fade in the logo after the font has loaded
     const logo = document.querySelector('.js-logo-fade');
     if (logo) {
-        // Use a small timeout to allow the browser to render and load the font
         setTimeout(() => {
             logo.classList.add('visible');
         }, 100);
     }
 
-
     /* ===================================================================
-       2. HOMEPAGE-ONLY SCRIPTS
-       - Checks for homepage elements before running.
-       =================================================================== */
+        2. HOMEPAGE-ONLY SCRIPTS
+        =================================================================== */
     
     const homeSection = document.getElementById('home');
     if (homeSection) {
-        // --- Scroll to top on load ---
-        window.scrollTo(0, 0);
 
-        // --- Animate title text ---
-        function animateText(elementId) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            const text = element.innerText;
-            element.innerHTML = '';
-            text.split('').forEach(char => {
-                const span = document.createElement('span');
-                span.className = 'char';
-                span.innerHTML = char === ' ' ? '&nbsp;' : char;
-                span.style.animationDelay = `${Math.random() * 0.8}s`;
-                element.appendChild(span);
+        // --- Text Animation Logic ---
+        function animateHeroTitle() {
+            const heroTitle = document.getElementById('hero-title');
+            if (!heroTitle) return;
+
+            const words = heroTitle.querySelectorAll('.animate-word');
+            
+            words.forEach(word => {
+                const text = word.innerText;
+                word.innerHTML = ''; // Clear only the current word span
+                text.split('').forEach(char => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.innerHTML = char === ' ' ? '&nbsp;' : char;
+                    span.style.animationDelay = `${Math.random() * 0.8}s`;
+                    word.appendChild(span);
+                });
             });
-            element.closest('.js-hero-text').style.opacity = 1; 
+            heroTitle.style.opacity = 1;
         }
 
-        setTimeout(() => {
-            animateText('anim-text-1');
-            animateText('anim-text-2');
-        }, 200);
+        // --- MODIFIED: We now run the animation AFTER the page is fully loaded ---
+        window.addEventListener('load', function() {
+            // This small delay gives the browser extra time to finish rendering
+            setTimeout(animateHeroTitle, 100); 
+        });
+
 
         // --- Intersection Observer for fade-in elements ---
         const animatedElements = document.querySelectorAll('.fade-in-up, .deco-doodle');
@@ -126,22 +125,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         window.addEventListener('scroll', () => {
             if (!aboutMeSection || !bgText || !content) return;
-
             const rect = aboutMeSection.getBoundingClientRect();
             let scrollPercent = 0;
-
             if (rect.top <= (window.innerHeight / 2) && rect.bottom >= (window.innerHeight / 2)) {
                 scrollPercent = ((window.innerHeight / 2) - rect.top) / (rect.height - window.innerHeight);
                 scrollPercent = Math.max(0, Math.min(1, scrollPercent));
             } else if (rect.bottom < (window.innerHeight / 2)) {
                 scrollPercent = 1;
             }
-
             const blurValue = scrollPercent * 10;
             bgText.style.filter = `blur(${blurValue}px)`;
             bgText.style.opacity = 1 - scrollPercent * 0.5;
             content.style.opacity = scrollPercent;
         });
     }
-
 });

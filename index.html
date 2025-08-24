@@ -19,7 +19,6 @@
                 <span class="block mt-[-0.5em] ml-4">Harbor</span>
             </a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
                 <div class="relative dropdown">
                     <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
                         <span id="dropdown-text">Blogs</span>
@@ -38,7 +37,6 @@
             </button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
-            <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-100 rounded">Home</a>
              <div class="relative">
                 <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
                     <span id="mobile-dropdown-text">Blogs</span>
@@ -62,9 +60,9 @@
                     <img src="assets/images/home_section_image.jpg" class="hidden" alt="" onerror="this.previousElementSibling.style.backgroundImage='url(https://placehold.co/1920x1080/a3bfed/ffffff?text=Image+Not+Found)'">
                     <div class="absolute top-0 left-0 w-full h-full" style="background-image: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));"></div>
                     <div class="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8">
-                        <h1 class="js-hero-text text-8xl sm:text-9xl md:text-[10rem] font-black text-white drop-shadow-xl leading-none text-left">
-                            <div id="anim-text-1">Starfell</div>
-                            <div id="anim-text-2">Harbor</div>
+                        <h1 id="hero-title" class="js-hero-text text-8xl sm:text-9xl md:text-[10rem] font-black text-white drop-shadow-xl leading-none text-left">
+                            <span class="animate-word block">Starfell</span>
+                            <span class="animate-word block">Harbor</span>
                         </h1>
                     </div>
                     <div class="absolute bottom-0 right-0 p-6 sm:p-8 md:p-12">
@@ -73,7 +71,7 @@
                 </div>
             </div>
         </section>
-        
+
 
         <div class="rounded-t-2xl overflow-hidden">
             <div class="gradient-section">
