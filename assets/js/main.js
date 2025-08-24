@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 span.style.animationDelay = `${Math.random() * 0.8}s`;
                 element.appendChild(span);
             });
+            element.closest('.js-hero-text').style.opacity = 1; 
         }
 
         setTimeout(() => {
