@@ -1,7 +1,7 @@
 /* ===================================================================
-   1. GLOBAL STYLES & VARIABLES
-   - These styles apply to the entire website.
-   =================================================================== */
+    1. GLOBAL STYLES & VARIABLES
+    - These styles apply to the entire website.
+    =================================================================== */
 :root {
     /* Colors */
     --logo-color: #7B87BF;
@@ -9,11 +9,11 @@
     --subscribe-hover-bg-color: #374151;
 
     /* Homepage Specific Colors */
-    --deco-shape-color: #2c3e50;
+    --deco-shape-color: #becee1; /* MODIFIED */
     --page-gradient-start: #E9E7F5; 
     --about-site-gradient-start: #EEF1FB;
     --about-me-bg-color: #F5F5DC;
-    --about-me-text-color: #800000;
+    --about-me-text-color: #7B87BF; /* MODIFIED */
     
     /* Adjustable Layout Variables */
     --navbar-padding: 0.8rem;
@@ -46,9 +46,9 @@ body {
 
 
 /* ===================================================================
-   2. SHARED COMPONENTS (Navbar & Footer)
-   - Styles for elements that appear on multiple pages.
-   =================================================================== */
+    2. SHARED COMPONENTS (Navbar & Footer)
+    - Styles for elements that appear on multiple pages.
+    =================================================================== */
 
 /* --- Navbar --- */
 #navbar {
@@ -112,9 +112,9 @@ body {
 
 
 /* ===================================================================
-   3. HOMEPAGE-ONLY STYLES
-   - Styles specific to index.html.
-   =================================================================== */
+    3. HOMEPAGE-ONLY STYLES
+    - Styles specific to index.html.
+    =================================================================== */
 .homepage-body {
     background-color: #ffffff; /* Homepage has a white background */
 }
@@ -123,9 +123,10 @@ body {
     background-image: linear-gradient(to bottom, var(--about-site-gradient-start), #ffffff);
 }
 
+/* MODIFIED CATEGORY CARD STYLES */
 .category-card {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.4); /* Slightly more opaque */
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 1rem;
     padding: 2rem;
     text-align: left;
@@ -134,12 +135,14 @@ body {
     overflow: hidden;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Softer, more modern shadow */
 }
 .category-card:hover {
     transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, 0.6);
-    border-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.9);
+    /* This adds a subtle glow in your theme color! */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2), 0 0 25px rgba(123, 135, 191, 0.3);
 }
 .category-card .arrow {
     position: absolute;
@@ -241,11 +244,20 @@ body {
     transition: opacity 0.3s ease-out;
 }
 
+/* Add this to your CSS file */
+.footer-headline-gradient {
+    background: linear-gradient(to right, #7B87BF, #111827);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
 
 /* ===================================================================
-   4. BLOG INDEX PAGE STYLES
-   - Styles for the Cyber, Tech, and Personal index pages.
-   =================================================================== */
+    4. BLOG INDEX PAGE STYLES
+    - Styles for the Cyber, Tech, and Personal index pages.
+    =================================================================== */
 
 /* --- Cyber Page Glitch Effect --- */
 .glitch-wrapper {
@@ -312,9 +324,9 @@ body {
 
 
 /* ===================================================================
-   5. BLOG POST PAGE STYLES
-   - Styles for individual blog articles (e.g., blog1.html).
-   =================================================================== */
+    5. BLOG POST PAGE STYLES
+    - Styles for individual blog articles (e.g., blog1.html).
+    =================================================================== */
 .blog-content {
     font-size: 1.125rem;
     line-height: 1.75;
