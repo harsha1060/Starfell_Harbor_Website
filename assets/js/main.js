@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         // --- Intersection Observer for fade-in elements ---
-        const animatedElements = document.querySelectorAll('.fade-in-up, .deco-doodle');
+        const animatedElements = document.querySelectorAll('.fade-in-up, .deco-doodle, .fade-in-item');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -139,4 +139,4 @@ document.addEventListener('DOMContentLoaded', function() {
             content.style.opacity = scrollPercent;
         });
     }
-});
+}); 

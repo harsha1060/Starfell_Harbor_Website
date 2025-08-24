@@ -9,11 +9,11 @@
     --subscribe-hover-bg-color: #374151;
 
     /* Homepage Specific Colors */
-    --deco-shape-color: #becee1; /* MODIFIED */
+    --deco-shape-color: #becee1;
     --page-gradient-start: #E9E7F5; 
     --about-site-gradient-start: #EEF1FB;
     --about-me-bg-color: #F5F5DC;
-    --about-me-text-color: #7B87BF; /* MODIFIED */
+    --about-me-text-color: #7B87BF;
     
     /* Adjustable Layout Variables */
     --navbar-padding: 0.8rem;
@@ -26,7 +26,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f8fafc; /* Default light gray for all pages */
+    background-color: #f8fafc;
 }
 
 .font-stylish { font-family: 'Playfair Display', serif; }
@@ -103,11 +103,19 @@ body {
     content: "";
     flex: 1;
     height: 1px;
-    background: #d1d5db; /* gray-300 */
+    background: #d1d5db;
 }
 .rotating-star {
     margin: 0 var(--footer-star-margin);
     animation: rotate-star 10s linear infinite;
+}
+
+.footer-headline-gradient {
+    background: linear-gradient(to right, #7B87BF, #111827);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 
@@ -116,16 +124,15 @@ body {
     - Styles specific to index.html.
     =================================================================== */
 .homepage-body {
-    background-color: #ffffff; /* Homepage has a white background */
+    background-color: #ffffff;
 }
 
 .gradient-section {
     background-image: linear-gradient(to bottom, var(--about-site-gradient-start), #ffffff);
 }
 
-/* MODIFIED CATEGORY CARD STYLES */
 .category-card {
-    background-color: rgba(255, 255, 255, 0.4); /* Slightly more opaque */
+    background-color: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 1rem;
     padding: 2rem;
@@ -135,13 +142,12 @@ body {
     overflow: hidden;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Softer, more modern shadow */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 .category-card:hover {
     transform: translateY(-12px) scale(1.03);
     background-color: rgba(255, 255, 255, 0.7);
     border-color: rgba(255, 255, 255, 0.9);
-    /* This adds a subtle glow in your theme color! */
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2), 0 0 25px rgba(123, 135, 191, 0.3);
 }
 .category-card .arrow {
@@ -161,6 +167,9 @@ body {
 
 
 /* --- Animations --- */
+#hero-title {
+    font-family: 'Croissant One', cursive;
+}
 .js-hero-text {
     opacity: 0;
 }
@@ -211,6 +220,37 @@ body {
     animation: doodle-anim 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
+/* --- Decorative Image Styles --- */
+.animated-deco {
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animated-deco.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+#deco-birds-1 {
+    width: 150px;
+    top: 5%;
+    left: 5%;
+    transition-delay: 0.2s;
+}
+#deco-birds-2 {
+    width: 100%;
+    top: 40%;
+    left: -3%;
+    transition-delay: 0.4s;
+}
+#deco-cloud-1 {
+    width: 500px;
+    top: 1%;
+    right: 1%;
+}
+
+
 /* --- About Me Section --- */
 .about-me-container {
     position: relative;
@@ -242,15 +282,6 @@ body {
     z-index: 2;
     opacity: 0;
     transition: opacity 0.3s ease-out;
-}
-
-/* Add this to your CSS file */
-.footer-headline-gradient {
-    background: linear-gradient(to right, #7B87BF, #111827);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
 }
 
 
@@ -290,7 +321,7 @@ body {
 }
 .text-link:hover .glitch::before {
     animation: glitch-anim-1 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-    color: #ef4444; /* Glitch color */
+    color: #ef4444;
     opacity: 0.8;
     left: -2px;
 }
