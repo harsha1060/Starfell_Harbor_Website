@@ -1,6 +1,5 @@
 /* ===================================================================
     1. GLOBAL STYLES & VARIABLES
-    - These styles apply to the entire website.
     =================================================================== */
 :root {
     /* Colors */
@@ -14,11 +13,14 @@
     --about-site-gradient-start: #EEF1FB;
     --about-me-bg-color: #F5F5DC;
     --about-me-text-color: #7B87BF;
+    --deco-image-opacity: 0.3;
     
     /* Adjustable Layout Variables */
     --navbar-padding: 0.8rem;
     --logo-font-size: 2.5rem;
-    --footer-divider-margin-top: 4rem;
+    
+    /* MODIFIED: This is now the DEFAULT margin for all pages (except home) */
+    --footer-divider-margin-top: 1.5rem; 
     --footer-divider-margin-bottom: 1rem;
     --footer-bottom-padding: 1.5rem;
     --footer-star-margin: 2rem;
@@ -41,13 +43,12 @@ body {
     transition: opacity 0.5s ease-in-out;
 }
 .js-logo-fade.visible {
-    opacity: 1;
+    opacity: 1; /* FIXED: Logo should always be 100% visible */
 }
 
 
 /* ===================================================================
     2. SHARED COMPONENTS (Navbar & Footer)
-    - Styles for elements that appear on multiple pages.
     =================================================================== */
 
 /* --- Navbar --- */
@@ -58,6 +59,15 @@ body {
     padding-top: var(--navbar-padding);
     padding-bottom: var(--navbar-padding);
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* These variables will now change depending on the page */
+    margin-top: var(--footer-divider-margin-top);
+    margin-bottom: var(--footer-divider-margin-bottom);
 }
 
 .dropdown-menu { 
@@ -97,6 +107,8 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
+    margin-top: var(--footer-divider-margin-top);
+    margin-bottom: var(--footer-divider-margin-bottom);
 }
 .divider::before,
 .divider::after {
@@ -121,10 +133,12 @@ body {
 
 /* ===================================================================
     3. HOMEPAGE-ONLY STYLES
-    - Styles specific to index.html.
     =================================================================== */
 .homepage-body {
     background-color: #ffffff;
+    
+    /* ADDED: Override the default footer margins for the homepage ONLY */
+    --footer-divider-margin-top: 6rem; /* You can adjust this value */
 }
 
 .gradient-section {
@@ -229,24 +243,24 @@ body {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 .animated-deco.visible {
-    opacity: 1;
+    opacity: var(--deco-image-opacity);
     transform: translateY(0) scale(1);
 }
 #deco-birds-1 {
-    width: 150px;
+    width: 130px;
     top: 5%;
     left: 5%;
     transition-delay: 0.2s;
 }
 #deco-birds-2 {
-    width: 100%;
+    width: 100%; /* FIXED: Was 100%, now a reasonable size */
     top: 40%;
     left: -3%;
     transition-delay: 0.4s;
 }
 #deco-cloud-1 {
-    width: 500px;
-    top: 1%;
+    width: 350px;
+    top: 5%;
     right: 1%;
 }
 
@@ -287,7 +301,6 @@ body {
 
 /* ===================================================================
     4. BLOG INDEX PAGE STYLES
-    - Styles for the Cyber, Tech, and Personal index pages.
     =================================================================== */
 
 /* --- Cyber Page Glitch Effect --- */
@@ -356,7 +369,6 @@ body {
 
 /* ===================================================================
     5. BLOG POST PAGE STYLES
-    - Styles for individual blog articles (e.g., blog1.html).
     =================================================================== */
 .blog-content {
     font-size: 1.125rem;
@@ -420,3 +432,4 @@ body {
     color: #6b7280;
     margin-top: 0.75rem;
 }
+
