@@ -253,9 +253,9 @@ body {
     transition-delay: 0.2s;
 }
 #deco-birds-2 {
-    width: 100%; /* FIXED: Was 100%, now a reasonable size */
-    top: 40%;
-    left: -3%;
+    width: 100%;
+    top: 50%;
+    left: 0%;
     transition-delay: 0.4s;
 }
 #deco-cloud-1 {
@@ -354,10 +354,11 @@ body {
 
 /* --- Tech & Personal Page Title Styles --- */
 .blog-title, .personal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    line-height: 2.75rem;
+    /* font-family removed to match the 'Inter' font of the cyber page */
+    font-size: 2.25rem; /* Changed from 2.5rem */
+    line-height: 2.5rem; /* Changed from 2.75rem */
     font-weight: 700;
+    letter-spacing: 0.05em; /* Added to match the cyber page style */
     color: #1f2937;
     text-decoration: none;
     transition: color 0.4s ease;
