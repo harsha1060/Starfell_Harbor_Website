@@ -13,7 +13,6 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Header & Navbar -->
     <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
         <div class="container mx-auto flex justify-between items-center">
             <a href="../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
@@ -23,7 +22,7 @@
             <nav class="hidden md:flex items-center space-x-8">
                 <div class="relative dropdown">
                     <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
-                        <span id="dropdown-text">Blogs</span> <!-- Add the span with the ID here -->
+                        <span id="dropdown-text">Blogs</span>
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
@@ -38,13 +37,13 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
              <div class="relative">
-                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
-                        <span id="dropdown-text">Blogs</span> <!-- Add the span with the ID here -->
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>                <div id="mobile-blogs-menu" class="hidden pl-4">
+                <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                    <span id="mobile-dropdown-text">Blogs</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="mobile-blogs-menu" class="hidden pl-4">
                     <a href="../cyber/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
                     <a href="../tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
                     <a href="../personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
@@ -55,7 +54,6 @@
     </header>
 
     <main>
-        <!-- Page Header -->
         <section class="py-24 text-center">
             <div class="container mx-auto px-4">
                 <h1 class="text-5xl md:text-7xl font-bold font-stylish text-gray-900">Tech Insights</h1>
@@ -63,12 +61,10 @@
             </div>
         </section>
 
-        <!-- Blog Post List -->
         <section class="pb-24">
             <div class="container mx-auto px-4">
                 <div class="border-t border-gray-300">
                     
-                    <!-- Blog Item 1 -->
                     <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
                         <div class="w-full md:w-1/3 lg:w-1/4">
                             <div class="overflow-hidden rounded-lg">
@@ -82,7 +78,6 @@
                         </a>
                     </div>
 
-                    <!-- Blog Item 2 -->
                     <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
                         <div class="w-full md:w-1/3 lg:w-1/4">
                             <div class="overflow-hidden rounded-lg">
@@ -96,7 +91,6 @@
                         </a>
                     </div>
                     
-                    <!-- Blog Item 3 -->
                     <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
                         <div class="w-full md:w-1/3 lg:w-1/4">
                             <div class="overflow-hidden rounded-lg">
@@ -111,7 +105,6 @@
                     </div>
 
                 </div>
-                <!-- Sign-off text -->
                 <div class="text-center pt-16">
                     <p class="font-stylish text-2xl text-gray-600">That’s all for now, sailor! — watch out for next week’s blog.</p>
                 </div>
@@ -119,7 +112,6 @@
         </section>
     </main>
 
-    <!-- UPDATED FOOTER SECTION -->
     <footer id="contact" style="padding-top: var(--footer-divider-margin-top); padding-bottom: var(--footer-bottom-padding);">
         <div class="container mx-auto px-4">
             <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">

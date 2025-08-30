@@ -136,9 +136,6 @@ body {
     =================================================================== */
 .homepage-body {
     background-color: #ffffff;
-    
-    /* ADDED: Override the default footer margins for the homepage ONLY */
-    --footer-divider-margin-top: 6rem; /* You can adjust this value */
 }
 
 .gradient-section {
@@ -253,8 +250,8 @@ body {
     transition-delay: 0.2s;
 }
 #deco-birds-2 {
-    width: 100%;
-    top: 50%;
+    width: 100%;    
+    top: 25%;
     left: 0%;
     transition-delay: 0.4s;
 }
@@ -283,7 +280,7 @@ body {
     transform: translate(-50%, -50%);
     font-size: 18vw;
     font-weight: 900;
-    color: var(--about-me-text-color);
+    color: #7B87BF;
     z-index: 1;
     transition: opacity 0.3s ease-out, filter 0.3s ease-out;
 }
@@ -354,11 +351,10 @@ body {
 
 /* --- Tech & Personal Page Title Styles --- */
 .blog-title, .personal-title {
-    /* font-family removed to match the 'Inter' font of the cyber page */
-    font-size: 2.25rem; /* Changed from 2.5rem */
-    line-height: 2.5rem; /* Changed from 2.75rem */
+    font-size: 2.25rem;
+    line-height: 2.5rem;
     font-weight: 700;
-    letter-spacing: 0.05em; /* Added to match the cyber page style */
+    letter-spacing: 0.05em;
     color: #1f2937;
     text-decoration: none;
     transition: color 0.4s ease;
@@ -378,31 +374,38 @@ body {
 }
 .blog-content h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     color: #111827;
 }
 .blog-content h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
     margin-bottom: 1rem;
     color: #111827;
 }
 .blog-content p {
     margin-bottom: 1.5rem;
 }
+
+/* NEW: Medium-style link styling */
 .blog-content a {
     color: var(--logo-color);
-    text-decoration: underline;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    transition: background-size 0.3s ease;
 }
 .blog-content a:hover {
     color: #5a67a0;
+    background-size: 100% 2px;
 }
+
 .blog-content blockquote {
     border-left: 4px solid var(--logo-color);
     padding-left: 1.5rem;
@@ -423,6 +426,14 @@ body {
 }
 .blog-content code {
     font-family: 'Source Code Pro', monospace;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+}
+.blog-content pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
 }
 .blog-content figure {
     margin: 3rem 0;
@@ -433,4 +444,3 @@ body {
     color: #6b7280;
     margin-top: 0.75rem;
 }
-

