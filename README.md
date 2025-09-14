@@ -1,8 +1,27 @@
 🌟 Starfell Harbor
 ==================
 
-Welcome to Starfell Harbor. This is a simple personal blog I'm building out of interest.
+Welcome to **Starfell Harbor** -- my small corner of the internet.
 
-My goal is to create a small corner of the internet to post my writings on cybersecurity, technology, and other personal thoughts.
+I've built this personal blog to share my writings on **cybersecurity, technology, and personal thoughts**. It's a space where I explore both technical topics and casual reflections.
 
-The site is currently a work in progress. Once it's ready, I'll update this space with a link to the live version. Thanks for stopping by!
+🔗 **Live Blog:** [starfellharbor.netlify.app](https://starfellharbor.netlify.app)
+
+🌐 About the Site
+-----------------
+
+-   Works best on **desktops** (mobile version is still in progress).
+
+-   Clean, minimal layout focused on **readability**.
+
+-   Sections include:
+
+    -   🛡️ **Cybersecurity** -- posts about security concepts, tools, and real-world applications.
+
+    -   ⚙️ **Technology** -- explorations of how things work, tutorials, and experiments.
+
+    -   ✨ **Personal Writings** -- my reflections, thoughts, and ideas outside tech.
+
+The site is still evolving, so expect improvements over time. Thanks for stopping by and checking it out!
+
+<img width="1920" height="906" alt="starfellharbor netlify app-Starfell Harbor - A Personal Blog-cvscreenshot" src="https://github.com/user-attachments/assets/10b3e519-e8d2-420c-93e9-0640d8f04b19" />
