@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Video Games? Not So Simple After All - Starfell Harbor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <div class="desktop-only-message">
+        <p>This website is best viewed on a desktop. The mobile version is currently under construction.</p>
+    </div>
+
+    <div class="site-content">
+        <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="../../../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+                    <span>Starfell</span>
+                    <span class="block mt-[-0.5em] ml-4">Harbor</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <div class="relative dropdown">
+                        <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                            <span id="dropdown-text">Blogs</span>
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                            <a href="../../../cyber/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                            <a href="../../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                            <a href="../../../personal/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                        </div>
+                    </div>
+                    <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+                 <div class="relative">
+                    <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                        <span id="mobile-dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-blogs-menu" class="hidden pl-4">
+                        <a href="../../../cyber/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                        <a href="../../index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                        <a href="../../../personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </div>
+        </header>
+
+        <main class="py-16 sm:py-24">
+            <article class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <header class="mb-12 text-center">
+                    <p class="text-lg text-gray-500">SEP 13, 2025 • 4 MIN READ</p>
+                    <h1 class="text-4xl md:text-6xl font-bold font-stylish mt-4 mb-6">Simple Video Games? Not So Simple After All</h1>
+                    <div class="flex items-center justify-center space-x-3 text-gray-600">
+                        <span>By Creepus</span>
+                    </div>
+                </header>
+
+                
+
+                <div class="blog-content">
+                    <p>We often play games in our daily lives to escape reality. But have you ever wondered how much complexity hides behind building even the simplest game?</p>
+                    <figure class="mb-12">
+                        <img src="images/1.webp" alt="Flappy Bird Title Screen" class="w-full h-auto rounded-2xl shadow-lg">
+                    </figure>
+                    <p>You might ask, “Why should I believe you if you’ve never made a game?” Well, I’ve actually <em>tried</em> building a few — including a replica of <em>Flappy Bird</em>. And let me tell you honestly: it’s not easy at all.</p>
+                    
+                    <p>Sure, AI today can generate a basic game in minutes, something that might take us days or weeks to code. But that only goes so far. AI struggles with the finer touches that make a game fun and addictive. That’s why, unlike web development, I don’t see game development becoming fully automated anytime soon. Games are about <strong>experience</strong>, and experience still needs a human touch.</p>
+                    <p>👉 If you want to try my version of Flappy Bird, you can download the executable here: <a href="https://github.com/harsha1060/Flappy_Bird_Clone" target="_blank" rel="noopener noreferrer">🔗 GitHub: Flappy Bird Clone by Harsha</a></p>
+                    
+                    <h2>Let’s Dive into Game Development</h2>
+                    <p>The objects we see in a game aren’t just random graphics. They’re a collection of <strong>sprites</strong> (images or animations). The challenge isn’t only drawing them, but also <strong>coding them to move, interact, and respond</strong> at the right time.</p>
+                    <p>Take <em>Flappy Bird</em> for example: Released in 2013, it became a global sensation. At first glance, it looks like it only uses a handful of graphics:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Background sprites (sky, ground, pipes)</li>
+                        <li>Bird sprite sheet (with a few frames of flapping animation)</li>
+                    </ul>
+                    <p>That’s it — no 3D models, no fancy shaders. Just a few images. But turning these pieces into a working, fun game is way harder than it looks.</p>
+                    <figure>
+                        <img src="images/2.webp" alt="Sprite sheet for the Flappy Bird game" class="w-full h-auto rounded-xl shadow-md in-article-image">
+                        <figcaption>Sprite sheet for the whole game</figcaption>
+                    </figure>
+                    
+                    <h2>The Hard Tasks Behind a Simple Game</h2>
+                    <ol class="list-decimal list-inside space-y-6">
+                        <li>
+                            <strong>Game Loop (The Heartbeat)</strong>
+                            <p>Every game runs on a loop: update → render → repeat.</p>
+                            <ul class="list-disc list-inside ml-4">
+                                <li><strong>Update:</strong> move the pipes, apply gravity, check collisions.</li>
+                                <li><strong>Render:</strong> draw the bird, pipes, and background at ~60 FPS.</li>
+                            </ul>
+                            <pre><code>while (gameRunning) {
+    handleInput();      // user taps or clicks
+    updatePhysics();    // gravity + velocity
+    checkCollisions();  // pipes and ground
+    renderFrame();      // draw everything
+}</code></pre>
+                            <figure>
+                                <img src="images/3.webp" alt="Animation of the Flappy Bird game loop" class="w-full h-auto rounded-xl shadow-md in-article-image">
+                            </figure>
+                            
+                        </li>
+                        <li>
+                            <strong>Physics (Gravity and Movement)</strong>
+                            <p>The bird falls naturally due to gravity, and a tap applies an upward force. Balancing this is tricky — too much gravity makes the game unfair, too little makes it boring.</p>
+                            <pre><code>// Gravity effect
+velocity += gravity * deltaTime;  
+birdY += velocity;
+// On tap
+if (input == TAP) {
+    velocity = -jumpForce;  // bird goes up
+}</code></pre>
+                        </li>
+                        <figure>
+                            <img src="images/4.gif" alt="Animation showing collision detection boxes" class="w-full h-auto rounded-xl shadow-md in-article-image">
+                        </figure>
+                        <li>
+                            <strong>Collision Detection</strong>
+                            <p>Every frame, we need to check if the bird has hit a pipe or the ground. A single bug here makes the game unplayable.</p>
+                            <pre><code>if (bird.intersects(pipe) || bird.y >= groundLevel) {
+    gameOver = true;
+}</code></pre>
+                            
+                            <figure>
+                                <img src="images/5.webp" alt="Animation showing the score increasing" class="w-full h-auto rounded-xl shadow-md in-article-image">
+                            </figure>
+                        </li>
+                        <li>
+                            <strong>Scoring System</strong>
+                            <p>Scoring is moderately easy: +1 point when the bird passes a pipe. But you have to track when the bird has <strong>successfully crossed</strong> and prevent double-counting.</p>
+                            <pre><code>for (Pipe pipe : pipes) {
+    if (!pipe.passed && bird.x > pipe.x + pipe.width) {
+        score++;
+        pipe.passed = true;
+    }
+}</code></pre>
+                            
+                            <figure>
+                                <img src="images/6.webp" alt="Diagram showing game states" class="w-full h-auto rounded-xl shadow-md in-article-image">
+                            </figure>
+                        </li>
+                        <li>
+                            <strong>Game States</strong>
+                            <p>The game has to handle different modes:</p>
+                            <ul class="list-disc list-inside ml-4">
+                                <li><strong>Ready</strong> → waiting for tap.</li>
+                                <li><strong>Playing</strong> → running physics, collisions, score.</li>
+                                <li><strong>Game Over</strong> → freeze physics, show restart option.</li>
+                            </ul>
+                            <p>Managing these transitions without bugs is harder than it looks.</p>
+                            
+                            <figure>
+                                <img src="images/7.webp" alt="Collage of AAA game covers like GTA 5 and Red Dead Redemption 2" class="w-full h-auto rounded-xl shadow-md in-article-image">
+                            </figure>
+                        </li>
+                    </ol>
+
+                    <h2>Why This Matters</h2>
+                    <p>My clone of <em>Flappy Bird</em> is just an <strong>offline game</strong>. It doesn’t need any database or backend — the score is stored only in memory during gameplay. Simple enough, right?</p>
+                    <p>But now think about what it takes to build a <strong>AAA game</strong>:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Multiplayer servers handling millions of players.</li>
+                        <li>Realistic physics engines for cars, bullets, or characters.</li>
+                        <li>Gigabytes of high-quality textures, animations, and sounds.</li>
+                        <li>AI-driven enemies, storylines, and player interactions.</li>
+                        <li>Massive teams of developers, designers, and testers.</li>
+                    </ul>
+                    <p>What feels like “just another game” is actually the work of <strong>years, hundreds of people, and millions of lines of code</strong>.</p>
+                    
+                    <h2>Takeaway</h2>
+                    <p>Even a tiny game like <em>Flappy Bird</em> teaches the fundamentals: physics, collisions, scoring, game loops, and polish. If such a simple-looking game is this challenging, you can only imagine the effort behind building a AAA title like <em>GTA 5</em>, <em>Red Dead Redemption 2</em>, or <em>Elden Ring</em>.</p>
+                    <p>So the next time you play a game — simple or complex — remember: behind that fun lies <strong>a world of hidden complexity, creativity, and code</strong>.</p>
+                </div>
+            </article>
+        </main>
+
+        <footer id="contact" class="pt-16 sm:pt-24" style="padding-bottom: var(--footer-bottom-padding);">
+            <div class="container mx-auto px-4">
+                <hr class="border-gray-200 mb-16 sm:mb-20">
+                <div class="max-w-xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold font-stylish mb-4">Enjoy the read?</h2>
+                    <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here along with your name — a simple way to share your appreciation!</p>
+                    <form name="..." method="POST" data-netlify="true" action="/thank-you/" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="hidden" name="form-name" value="..." />
+                        <input type="text" name="visitor_name" placeholder="Enter your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send</button>
+                    </form>
+                </div>
+                <div class="container mx-auto mt-16">
+                    <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                        <img src="../../../assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-gray-600 text-sm">&copy; 2025 Starfell Harbor. All Rights Reserved.</p>
+                        <a href="../../index.html" class="text-gray-600 hover:text-gray-900 text-sm">Back to Tech Writings</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>
