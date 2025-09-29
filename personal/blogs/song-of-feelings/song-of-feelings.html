@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
     <title>The Song of Feelings - Starfell Harbor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +78,7 @@
                     <p>People share their thoughts, feelings, and creativity with others. Sometimes, what someone expresses through words, art, or actions resonates so deeply that it becomes part of our own experience and stays with us long after the moment has passed.</p>
                     <p>Think of a poem. Not just a collection of rhyming lines, but a carefully crafted bouquet of emotions. When a poet pours their soul onto the page, choosing each word with careful intent, they’re not just writing; they’re in a world of feelings. And when those words find their way into our heart, we feel it like a warm blanket or a sudden, sharp intake of breath.</p>
                     
-                    <figure>
+                    <figure class="mb-12">
                         <img src="images/1.webp" alt="A person writing poetry in a notebook." class="w-full h-auto rounded-xl shadow-md">
                     </figure>
                     <p>Poets share their emotions with the world, and somehow they make someone else’s heart lighter or heavier too.</p>
@@ -91,15 +96,19 @@
                     <p>The true essence of some poetry lies in its ability to capture a complex emotion, often a dual one and make it intensely felt.</p>
                     <p><a href="https://www.poetryfoundation.org/poems/45474/o-captain-my-captain" target="_blank" rel="noopener noreferrer"><em>O Captain! My Captain!</em></a> by Walt Whitman which is a perfectly blend of triumph and personal grief, and its message has stayed with me ever since:</p>
                     
-                    <div class="my-6 text-gray-700 italic leading-tight">
-                        <p>O Captain! my Captain! our fearful trip is done,<br>
+                    <figure class="mb-12">
+                        <img src="images/2.webp" alt="Abstract depiction of grief and triumph, evoking the poem 'O Captain! My Captain!'" class="w-full h-auto rounded-xl shadow-md">
+                    </figure>
+
+                    <div class="my-6 text-gray-700 italic leading-tight font-mono">
+                        O Captain! my Captain! our fearful trip is done,<br>
                         The ship has weather’d every rack, the prize we sought is won,<br>
                         The port is near, the bells I hear, the people all exulting,<br>
                         While follow eyes the steady keel, the vessel grim and daring;<br>
                         <span class="inline-block pl-16">But O heart! heart! heart!</span><br>
                         <span class="inline-block pl-24">O the bleeding drops of red,</span><br>
                         <span class="inline-block pl-32">Where on the deck my Captain lies,</span><br>
-                        <span class="inline-block pl-40">Fallen cold and dead.</span></p>
+                        <span class="inline-block pl-40">Fallen cold and dead.</span>
                     </div>
 
                     <p>Some poems demand the full understanding of literature to grasp the essence of it, where as some can be enjoyed by everyone with basic literature knowledge.</p>
@@ -110,7 +119,7 @@
                         <li>When a friend writes a short poem about a rainy day in their story that perfectly captures your own feeling of coziness, it means more than reading something heavy from a English text book. It’s a direct, honest connection.</li>
                         <li><strong>It Becomes a Memory:</strong> We all have little things we keep forever. It might be silly wishes our friends sang to us on our birthdays, or a little poem a friend wrote about you. These aren’t perfect works, but they are <strong>priceless</strong> because they are tied to a specific person and a specific moment in your life. They can be remembered for a lifetime.</li>
                     </ul>
-                    <br>
+
                     <p>The truth is, everyone has feelings, but not the ability to express them correctly. But when a “common person” decides to put those feelings into words, even with imperfect rhythm, they are doing the exact same thing a renowned poet is doing. And sometimes, that simple, honest piece is exactly what another soul needs to feel less alone.</p>
                     
                     <p class="text-center text-2xl font-stylish italic text-gray-800 pt-8">The greatest poems are simply the most honest ones.</p>
@@ -121,15 +130,17 @@
         <footer id="contact" class="pt-16 sm:pt-24" style="padding-bottom: var(--footer-bottom-padding);">
             <div class="container mx-auto px-4">
                 <hr class="border-gray-200 mb-16 sm:mb-20">
+                
                 <div class="max-w-xl mx-auto text-center">
-                    <h2 class="text-4xl font-bold font-stylish mb-4">Like my work?</h2>
-                    <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here along with your name - a simple way to share your appreciation!</p>
+                    <h2 class="text-4xl font-bold font-stylish mb-4">Enjoy the read?</h2>
+                    <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here along with your name — a simple way to share your appreciation!</p>
                     <form name="appreciation-personal-song-of-feelings" method="POST" data-netlify="true" action="/thank-you/" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                         <input type="hidden" name="form-name" value="appreciation-personal-song-of-feelings" />
-                        <input type="text" name="visitor_wish_and_name" placeholder="Wishes - Your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send Appreciation</button>
+                        <input type="text" name="visitor_name" placeholder="Wishes - Your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send</button>
                     </form>
                 </div>
+                
                 <div class="container mx-auto mt-16">
                     <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
                         <img src="../../../assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
