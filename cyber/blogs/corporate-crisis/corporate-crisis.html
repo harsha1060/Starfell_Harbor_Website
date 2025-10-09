@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <title>Corporate Crisis - Starfell Harbor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <div class="desktop-only-message">
+        <p>This website is best viewed on a desktop. The mobile version is currently under construction.</p>
+    </div>
+
+    <div class="site-content">
+        <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="../../../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+                    <span>Starfell</span>
+                    <span class="block mt-[-0.5em] ml-4">Harbor</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <div class="relative dropdown">
+                        <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                            <span id="dropdown-text">Blogs</span>
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                            <a href="../../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                            <a href="../../../tech/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                            <a href="../../../personal/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                        </div>
+                    </div>
+                    <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+                 <div class="relative">
+                    <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                        <span id="mobile-dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-blogs-menu" class="hidden pl-4">
+                        <a href="../../index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                        <a href="../../../tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                        <a href="../../../personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </div>
+        </header>
+
+        <main class="py-16 sm:py-24">
+            <article class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <header class="mb-12 text-center">
+                    <p class="text-lg text-gray-500">OCT 09, 2025 • 4 MIN READ</p>
+                    <h1 class="text-4xl md:text-6xl font-bold font-stylish mt-4 mb-2">Corporate Crisis</h1>
+                    <p class="text-xl text-gray-600 font-stylish">Unpacking the Massive ShinyHunters Extortion Spree</p>
+                    <div class="flex items-center justify-center space-x-3 text-gray-600 mt-6">
+                        <span>By Creepus</span>
+                    </div>
+                </header>
+
+                <figure class="mb-12">
+                    <img src="images/1.webp" alt="Corporate data breach and extortion concept" class="w-full h-auto rounded-2xl shadow-lg">
+                </figure>
+
+                <div class="blog-content">
+                    <p>Hey everyone, let’s dive into one of the biggest and most aggressive cybercrime events happening right now. A powerful hacking group called <em>ShinyHunters</em> (also tracked as <code>UNC6040</code>) has gone from just stealing data to launching a full-scale corporate extortion campaign. They’re publicly threatening and trying to force huge companies to pay enormous ransoms.</p>
+                    <p>This information is based on detailed reporting from <a href="https://krebsonsecurity.com/" target="_blank" rel="noopener noreferrer">KrebsOnSecurity</a>. If you’re interested in all the deep, original details, you can find the article there.</p>
+
+                    <h2>The Salesforce Attack: The Starting Point</h2>
+                    <p>The main wave of trouble began back in May 2025. ShinyHunters used a clever trick called <code>voice phishing</code>, which is like a scam phone call. They tricked employees at various companies into connecting a <strong>malicious application</strong> directly to their corporate <strong>Salesforce portal</strong>.</p>
+                    <p><strong>The Damage:</strong> Salesforce is a massive platform used by countless companies, including giants like <em>Toyota</em>, <em>FedEx</em>, <em>Disney/Hulu</em>, and <em>UPS</em>. By tricking those employees, the hackers were able to steal over a <strong>billion records</strong> of customer data from these firms. This is a staggering amount of sensitive information.</p>
+                    <p><strong>The Extortion Threat:</strong> To cash in, the group set up a public website they call <em>Scattered LAPSUS$ Hunters</em> (which is a name that links them to a mix of several hacking crews). Their demand was simple and scary: they told Salesforce, Inc., to <strong>pay a huge ransom by October 10</strong>, or they would leak all the customers’ stolen data for the world to see.</p>
+                    <figure>
+                        <img src="images/2.webp" alt="Screenshot of the ShinyHunters extortion website" class="w-full h-auto rounded-xl shadow-md">
+                        <figcaption>This screenshot here shows the group’s new extortion website where they threaten to publish the stolen data unless Salesforce or individual victim companies pay up.</figcaption>
+                    </figure>
+                    <p>Salesforce’s answer, thankfully, was a firm <strong>NO</strong> — they stated they will <strong>not negotiate, engage with, or pay</strong> the ransom demands.</p>
+
+                    <h2>Broader Targets: Red Hat and Discord Hit</h2>
+                    <p>ShinyHunters isn’t focusing on just one target. They are proving they can hit almost anywhere:</p>
+                    <ul class="list-disc list-outside ml-8 space-y-2">
+                        <li><strong>Red Hat Data Theft:</strong> In September, they claimed to have compromised a <strong>GitLab server</strong> used by enterprise software maker Red Hat. They stole over <strong>28,000 code repositories</strong>. This included vital documents like <strong>Customer Engagement Reports (CERs)</strong>, which had client secrets such as <code>access tokens</code> (digital keys) for other services like Azure and Docker.</li>
+                        <li><strong>Discord User Leak:</strong> They also claimed responsibility for stealing data from <strong>Discord</strong> users. This happened by hacking into a <strong>third-party customer service provider</strong> that Discord uses. The stolen information included things like Discord usernames, emails, IP addresses, and even the last four digits of some stored payment cards.</li>
+                    </ul>
+
+                    <h2>Highly Technical Tools: Zero-Days and Backdoors</h2>
+                    <p>These hackers are using more than just phone calls; they’re deploying high-level technical weapons:</p>
+                    <p><strong>Oracle Zero-Day Exploit:</strong> The group exposed and exploited a critical, unknown security flaw — known as a <strong>zero-day vulnerability</strong> — in <strong>Oracle’s E-Business Suite</strong> software. This flaw, labeled <code>CVE-2025–61882</code>, allowed them to take complete control of servers without needing a password (unauthenticated remote code execution). This is one of the most serious flaws you can find.</p>
+                    <p><strong>The ASYNCRAT Trojan:</strong> The group has also been sending out highly targeted, threatening emails, even to security reporters and firms. The file attached to these emails installs a dangerous program called <code>ASYNCRAT</code>. This is a <strong>backdoor</strong> that gives the hackers full remote access to a computer. Once it’s on your machine, it can:</p>
+                    <ul class="list-disc list-outside ml-8 space-y-2">
+                        <li>Record everything you type (keylogging).</li>
+                        <li>Take screenshots and record videos.</li>
+                        <li>Steal saved passwords and account logins from web browsers like Chrome and Firefox.</li>
+                    </ul>
+                    <figure>
+                        <img src="images/3.webp" alt="Example of the phishing email sent by ShinyHunters" class="w-full h-auto rounded-xl shadow-md">
+                        <figcaption>An example of the threatening phishing email they send, linking to the malicious program.</figcaption>
+                    </figure>
+                    <p>This shows <a href="https://www.virustotal.com/gui/file/9abe847b497e68919143d4da1bb34e565a7fa9991f51c8f6bb7e5911cee01a24" target="_blank" rel="noopener noreferrer">here</a> what happens when that malicious file is scanned, confirming it is dangerous.</p>
+
+                    <h2>The People Behind the Attacks</h2>
+                    <p>The group’s complex identity (<em>ShinyHunters</em>, <code>UNC6040</code>, <em>Scattered LAPSUS$ Hunters</em>) is because it’s actually an <strong>amalgamation</strong> — a mix — of several major cybercrime crews, including <em>Scattered Spider</em> and <em>Lapsus$</em>.</p>
+                    <p>Many of these hackers are young, sometimes called “Advanced Persistent Teenagers” (APT), and they communicate and share tools in online criminal chat channels. While they are powerful, law enforcement is making progress. Authorities in the U.K. and U.S. have recently charged and sentenced several key members for their roles in these widespread extortion schemes.</p>
+
+                    <h2>My Takeaway: Focus on Defense</h2>
+                    <p>This entire saga shows that major companies are in a state of constant, aggressive warfare against sophisticated hackers. Since we, as regular users, can’t directly fix a huge corporate security flaw, it highlights the need for us to be extra careful with our own security habits:</p>
+                    <ul class="list-disc list-outside ml-8 space-y-2">
+                        <li><strong>Don’t Click:</strong> Treat <strong>any</strong> unexpected link or attachment with extreme suspicion.</li>
+                        <li><strong>Password Security:</strong> Use unique, strong passwords for every account. If one company leaks your data, the hackers can’t easily jump to your other services.</li>
+                    </ul>
+                    <br>
+                    <p>The responsibility for protecting our data ultimately rests with the companies we trust, but staying informed about threats like ShinyHunters is the first step in our personal defense.</p>
+                </div>
+            </article>
+        </main>
+
+        <footer id="contact" class="pt-16 sm:pt-24" style="padding-bottom: var(--footer-bottom-padding);">
+            <div class="container mx-auto px-4">
+                <hr class="border-gray-200 mb-16 sm:mb-20">
+                <div class="max-w-xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold font-stylish mb-4">Enjoy the read?</h2>
+                    <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here along with your name — a simple way to share your appreciation!</p>
+                    <form name="appreciation-cyber-corporate-crisis" method="POST" data-netlify="true" action="/thank-you/" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="hidden" name="form-name" value="appreciation-cyber-corporate-crisis" />
+                        <input type="text" name="visitor_name" placeholder="Wishes - Your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send</button>
+                    </form>
+                </div>
+                <div class="container mx-auto mt-16">
+                    <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                        <img src="../../../assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-gray-600 text-sm">&copy; 2025 Starfell Harbor. All Rights Reserved.</p>
+                        <a href="../../index.html" class="text-gray-600 hover:text-gray-900 text-sm">Back to Cyber Writings</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>
