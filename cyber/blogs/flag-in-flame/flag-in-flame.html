@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <title>picoCTF Walkthrough: Cracking the "Flag in Flame" - Starfell Harbor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <div class="desktop-only-message">
+        <p>This website is best viewed on a desktop. The mobile version is currently under construction.</p>
+    </div>
+
+    <div class="site-content">
+        <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="../../../index.html" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+                    <span>Starfell</span>
+                    <span class="block mt-[-0.5em] ml-4">Harbor</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <div class="relative dropdown">
+                        <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                            <span id="dropdown-text">Blogs</span>
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                            <a href="../../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                            <a href="../../../tech/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                            <a href="../../../personal/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                        </div>
+                    </div>
+                    <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+                 <div class="relative">
+                    <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                        <span id="mobile-dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-blogs-menu" class="hidden pl-4">
+                        <a href="../../index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                        <a href="../../../tech/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                        <a href="../../../personal/index.html" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </div>
+        </header>
+
+        <main class="py-16 sm:py-24">
+            <article class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <header class="mb-12 text-center">
+                    <p class="text-lg text-gray-500">JAN 06, 2026 • 4 MIN READ</p>
+                    <h1 class="text-4xl md:text-6xl font-bold font-stylish mt-4 mb-2">picoCTF Walkthrough: Cracking the "Flag in Flame"</h1>
+                    <p class="text-xl text-gray-600 mt-4 italic">Category: Forensics</p>
+                    <div class="flex items-center justify-center space-x-3 text-gray-600 mt-6">
+                        <span>By Creepus</span>
+                    </div>
+                </header>
+
+                <figure class="mb-12">
+                    <img src="images/1.webp" alt="Abstract visualization of file decoding and forensics" class="w-full h-auto rounded-lg shadow-lg">
+                </figure>
+
+                <div class="blog-content">
+                    <p>I recently decided to take on the <strong>Flag in Flame</strong> challenge in picoCTF. It was a great exercise in recognizing data encoding and file signatures. It started with a simple file download but quickly turned into a multi-step decoding process. Here is exactly how I solved it.</p>
+
+                    <h2>1. The Suspicious "Log" File</h2>
+                    <p>The challenge provided a single file named <code>logs.txt</code>. Typically, when you see a log file in a CTF, you expect to be grep-ing through lines of server activity or error messages.</p>
+                    <p>However, the first thing that caught my eye was the <strong>file size</strong>. For a text file, it was unusually large. I opened it up to inspect the contents, and my suspicions were confirmed immediately. There were no timestamps, no IP addresses, and no readable words—just a massive, continuous block of alphanumeric characters.</p>
+
+                    <h2>2. Recognizing the Encoding</h2>
+                    <p>I analyzed the character set. It consisted of <code>A-Z</code>, <code>a-z</code>, <code>0-9</code>, and symbols like <code>+</code> and <code>/</code>. This is the classic signature of <strong>Base64 encoding</strong>.</p>
+                    <p>One detail stood out: usually, Base64 strings end with one or two equal signs (<code>=</code>) as padding. In this file, <strong>there were no equal signs</strong> at the end. While padding is common, its absence doesn't mean it's not Base64; it just means the data length happened to align perfectly with the encoding blocks. I was confident this was a binary file disguised as text.</p>
+
+                    <h2>3. Decoding the Payload</h2>
+                    <p>I turned to the command line to decode it. My first instinct was to just check the output, so I ran the <code>base64 -d</code> command printing to the standard output.</p>
+                    <p>This was a mistake! My terminal was instantly flooded with garbage characters and weird symbols. This confirmed that the decoded data wasn't a hidden text message (like a password), but rather a <strong>binary file</strong>—likely an image given the challenge name "Flag in Flame."</p>
+                    <p>I ran the command again, this time redirecting the output to a file. I guessed it might be a JPEG:</p>
+                    
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto whitespace-pre border-l-4 border-purple-500">base64 -d logs.txt > flag.jpg</div>
+                    
+                    <p>I checked the folder, and sure enough, I had a valid image file.</p>
+
+                    <h2>4. Visual Analysis and Hex Extraction</h2>
+                    <p>I opened <code>flag.jpg</code>. It was a picture of flames (fitting the theme), but I didn't need to run any complex steganography tools like <code>steghide</code> or <code>zsteg</code>.</p>
+                    <p>I simply looked at the image data visually. Hidden within the image itself was a long string of text. I zoomed in and transcribed it. The string was composed entirely of numbers <code>0-9</code> and letters <code>A-F</code>.</p>
+                    <p>This specific range of characters is the hallmark of <strong>Hexadecimal encoding</strong>.</p>
+
+                    <h2>5. The Final Flag</h2>
+                    <p>I copied the hex string from the image and decode it into ASCII text. There are a few ways to do this, but I used the the online convertor this time:</p>
+                    <p>The output was immediate. The hex string decoded perfectly into readable text, revealing the flag in the standard <code>picoCTF{...}</code> format.</p>
+
+                    <h2>Summary</h2>
+                    <p>This challenge was all about trusting your instincts on file types.</p>
+                    <ul class="list-disc list-outside ml-8 space-y-2 mt-4">
+                        <li><strong>Analyze:</strong> The <code>logs.txt</code> was too big and looked like Base64 (even without padding).</li>
+                        <li><strong>Decode:</strong> Converted the text blob into a binary <code>.jpg</code>.</li>
+                        <li><strong>Observe:</strong> Found the Hex string visually hidden in the image.</li>
+                        <li><strong>Solve:</strong> Decoded the Hex to get the flag.</li>
+                    </ul>
+                </div>
+            </article>
+        </main>
+
+        <footer id="contact" class="pt-16 sm:pt-24" style="padding-bottom: var(--footer-bottom-padding);">
+            <div class="container mx-auto px-4">
+                <hr class="border-gray-200 mb-16 sm:mb-20">
+                <div class="max-w-xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold font-stylish mb-4">Enjoy the walkthrough?</h2>
+                    <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here along with your name — a simple way to share your appreciation!</p>
+                    <form name="appreciation-cyber-flag-in-flame" method="POST" data-netlify="true" action="/thank-you/" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="hidden" name="form-name" value="appreciation-cyber-flag-in-flame" />
+                        <input type="text" name="visitor_name" placeholder="Wishes - Your name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send</button>
+                    </form>
+                </div>
+                <div class="container mx-auto mt-16">
+                    <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                        <img src="../../../assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-gray-600 text-sm">&copy; 2026 Starfell Harbor. All Rights Reserved.</p>
+                        <a href="../../index.html" class="text-gray-600 hover:text-gray-900 text-sm">Back to Cyber</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>
