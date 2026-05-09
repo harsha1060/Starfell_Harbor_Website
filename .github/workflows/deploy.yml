@@ -2,10 +2,10 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "master" ] # Make sure this matches your branch name
+    branches: [ "master" ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -28,3 +28,30 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/harsha1060/starfell_harbor_website:latest
+
+      - name: Deploy to Oracle Cloud
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.ORACLE_HOST }}
+          username: ${{ secrets.ORACLE_USER }}
+          key: ${{ secrets.ORACLE_SSH_KEY }}
+          script: |
+            # Login to ghcr so Oracle can pull the private image
+            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            
+            # Pull the latest image
+            docker pull ghcr.io/harsha1060/starfell_harbor_website:latest
+            
+            # Stop and remove old container if it exists
+            docker stop starfell || true
+            docker rm starfell || true
+            
+            # Run the new container
+            docker run -d \
+              --name starfell \
+              --restart unless-stopped \
+              -p 80:80 \
+              ghcr.io/harsha1060/starfell_harbor_website:latest
+            
+            # Clean up old unused images to save disk space
+            docker image prune -f
