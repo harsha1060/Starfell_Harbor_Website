@@ -1,0 +1,5 @@
+starfellharbor.mooo.com {
+    root * /usr/share/caddy
+    file_server
+    encode gzip
+}

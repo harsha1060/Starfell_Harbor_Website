@@ -45,6 +45,7 @@ jobs:
               --restart unless-stopped \
               -p 80:80 \
               -p 443:443 \
-              -v /etc/letsencrypt:/etc/letsencrypt:ro \
+              -v caddy_data:/data \
+              -v caddy_config:/config \
               ghcr.io/harsha1060/starfell_harbor_website:latest
             docker image prune -f
