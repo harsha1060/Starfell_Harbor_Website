@@ -5,7 +5,7 @@ Welcome to **Starfell Harbor** -- my small corner of the internet.
 
 I've built this personal blog to share my writings on **cybersecurity, technology, and personal thoughts**. It's a space where I explore both technical topics and casual reflections.
 
-🔗 **Live Blog:** [starfellharbor.netlify.app](https://starfellharbor.netlify.app)
+🔗 **Live Blog:** [starfellharbor.mooo.com](https://starfellharbor.mooo.com)
 
 🌐 About the Site
 -----------------
