@@ -1,0 +1,22 @@
+---
+import type { MarkdownInstance } from 'astro';
+
+interface Frontmatter {
+    title: string;
+    date: string;
+    category: string;
+}
+
+// 1. Fetch all markdown logs
+const markdownFiles = import.meta.glob<MarkdownInstance<Frontmatter>>('../blog/*.md', { eager: true });
+const allPosts = Object.entries(markdownFiles).map(([filepath, post]) => {
+    const cleanUrl = filepath.replace(/^\.\.\/blog/, '/blog').replace(/\.md$/, '');
+    return {
+        url: cleanUrl,
+        frontmatter: post.frontmatter
+    };
+});
+
+// 2. We'll capture which category the user is visiting down below dynamically,
+// but for static matching on your specific routes, we can create individual pages or filter.
+---

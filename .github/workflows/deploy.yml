@@ -15,6 +15,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-node-version: '22'
+          cache: 'npm'
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -22,24 +28,36 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ghcr.io/harsha1060/starfell_harbor_website:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-      - name: Deploy to Oracle Cloud
+      - name: Deploy to Oracle Cloud via SSH
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.ORACLE_HOST }}
           username: ${{ secrets.ORACLE_USER }}
           key: ${{ secrets.ORACLE_SSH_KEY }}
           script: |
-            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            # Log in locally using standard registry scope parameters
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+            
+            # Fetch newest stable compilation image
             docker pull ghcr.io/harsha1060/starfell_harbor_website:latest
+            
+            # Destruct old tracking container smoothly
             docker stop starfell-blog || true
             docker rm starfell-blog || true
+            
+            # Launch upgraded production platform with explicit volume mappings
             docker run -d \
               --name starfell-blog \
               --restart unless-stopped \
@@ -48,4 +66,6 @@ jobs:
               -v caddy_data:/data \
               -v caddy_config:/config \
               ghcr.io/harsha1060/starfell_harbor_website:latest
+              
+            # Clean system workspace storage layer
             docker image prune -f

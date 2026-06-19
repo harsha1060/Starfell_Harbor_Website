@@ -1,0 +1,95 @@
+---
+import type { MarkdownInstance } from 'astro';
+
+interface Frontmatter { title: string; date: string; category: string; }
+
+const markdownFiles = import.meta.glob<MarkdownInstance<Frontmatter>>('../blog/*.md', { eager: true });
+const techPosts = Object.entries(markdownFiles)
+    .map(([filepath, post]) => ({
+        url: filepath.replace(/^\.\.\/blog/, '/blog').replace(/\.md$/, ''),
+        frontmatter: post.frontmatter
+    }))
+    .filter(post => post.frontmatter.category === 'tech')
+    .sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" style="overflow-y: scroll;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <title>Starfell Harbor - Tech Insights</title>
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Croissant+One&family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body class="homepage-body text-gray-800">
+    <div class="desktop-only-message">
+        <p>This website is best viewed on a desktop. The mobile version is currently under construction.</p>
+    </div>
+    <div class="site-content">
+
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+                <span>Starfell</span>
+                <span class="block mt-[-0.5em] ml-4">Harbor</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <div class="relative dropdown">
+                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                        <span id="dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                        <a href="/cyber" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                        <a href="/tech" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                        <a href="/personal" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                    </div>
+                </div>
+                <a href="/#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+             <div class="relative">
+                <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                    <span id="mobile-dropdown-text">Blogs</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="mobile-blogs-menu" class="hidden pl-4">
+                    <a href="/cyber" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                    <a href="/tech" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                    <a href="/personal" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                </div>
+            </div>
+            <a href="/#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+        </div>
+    </header>
+
+    <main class="w-full pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-bold font-stylish mb-8">Tech Insights</h1>
+            <ul class="space-y-4">
+                {techPosts.map(post => (
+                    <li class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex justify-between items-center">
+                        <a href={post.url} class="text-xl font-bold text-gray-500 hover:text-[#91a7eb]">{post.frontmatter.title}</a>
+                        <span class="font-mono text-gray-400">[{post.frontmatter.date}]</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </main>
+
+    </div>
+    <script is:inline src="/assets/js/main.js"></script>
+</body>
+</html>

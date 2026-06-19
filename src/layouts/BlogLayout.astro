@@ -1,0 +1,156 @@
+---
+const { frontmatter } = Astro.props;
+
+// Format the date dynamically if it exists, otherwise fall back gracefully
+const rawDate = frontmatter.date || "JUN 18, 2026";
+const formattedDate = typeof rawDate === 'string' ? rawDate.toUpperCase() : rawDate;
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" style="overflow-y: scroll;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <title>{frontmatter.title} - Starfell Harbor</title>
+    <script is:inline src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+    <style is:global>
+    /* Slider scrollbar hide */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* --- NEW: Beautiful Typography Spacing --- */
+    .blog-content p {
+        line-height: 1.8; /* Increases the gap between lines of text */
+        margin-bottom: 1.75rem; /* Increases the gap between paragraphs */
+    }
+    
+    .blog-content li {
+        line-height: 1.8; /* Matches list item line height to paragraphs */
+        margin-bottom: 0.75rem; /* Adds breathing room between bullet points */
+    }
+</style>
+</head>
+<body class="text-gray-800">
+    <div class="desktop-only-message">
+        <p>This website is best viewed on a desktop. The mobile version is currently under construction.</p>
+    </div>
+    <div class="site-content">
+
+    <header id="navbar" class="sticky top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 border-b border-gray-200 bg-white/80 backdrop-blur-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="font-logo js-logo-fade" style="color: var(--logo-color); line-height: 1;">
+                <span>Starfell</span>
+                <span class="block mt-[-0.5em] ml-4">Harbor</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <div class="relative dropdown">
+                    <button id="blogs-button" class="text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                        <span id="dropdown-text">Blogs</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="blogs-menu" class="dropdown-menu absolute top-full w-48 bg-white rounded-lg shadow-xl py-2">
+                        <a href="/cyber" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cyber</a>
+                        <a href="/tech" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tech</a>
+                        <a href="/personal" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Personal</a>
+                    </div>
+                </div>
+                <a href="#contact" class="subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-lg shadow-md p-4">
+             <div class="relative">
+                <button id="mobile-blogs-button" class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded flex justify-between items-center">
+                    <span id="mobile-dropdown-text">Blogs</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="mobile-blogs-menu" class="hidden pl-4">
+                    <a href="/cyber" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Cyber</a>
+                    <a href="/tech" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Tech</a>
+                    <a href="/personal" class="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Personal</a>
+                </div>
+            </div>
+            <a href="#contact" class="block mt-2 text-center subscribe-btn text-white font-semibold py-2 px-5 rounded-lg">Appreciate</a>
+        </div>
+    </header>
+
+    <main class="py-16 sm:py-24">
+        <article class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <header class="mb-12 text-center">
+                <p class="text-lg text-gray-500">{formattedDate} • {frontmatter.readTime || '5 MIN READ'}</p>
+                <h1 class="text-4xl md:text-6xl font-bold font-stylish mt-4 mb-6">{frontmatter.title}</h1>
+                <div class="flex items-center justify-center space-x-3 text-gray-600">
+                    <span>By {frontmatter.author || 'Creepus'}</span>
+                </div>
+            </header>
+
+            {frontmatter.image && (
+                <figure class="mb-12">
+                    <img src={frontmatter.image} alt={frontmatter.title} class="w-full h-auto rounded-2xl shadow-lg">
+                </figure>
+            )}
+
+            <div class="blog-content prose max-w-none text-gray-800 leading-relaxed space-y-6 text-lg">
+                <slot />
+            </div>
+        </article>
+    </main>
+
+    <footer id="contact" class="pt-16 sm:pt-24" style="padding-bottom: var(--footer-bottom-padding);">
+        <div class="container mx-auto px-4">
+            <hr class="border-gray-200 mb-16 sm:mb-20">
+            
+            <div class="max-w-xl mx-auto text-center">
+                <h2 class="text-4xl font-bold font-stylish mb-4">Enjoy the read?</h2>
+                <p class="text-gray-600 mb-8">If you enjoyed my work, feel free to leave your wishes here, it is a simple way to share your appreciation! (No login required)</p>
+                
+                <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="hidden" name="access_key" value="bdc77f98-f920-44d6-a1d2-7fd8ef560073" />
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <input type="hidden" name="subject" value={`Appreciation from ${frontmatter.category || 'general'} blog`} />
+                    
+                    <input type="text" name="visitor_wish" placeholder="Your message & name..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <button type="submit" class="w-full sm:w-auto subscribe-btn text-white font-semibold py-3 px-6 rounded-lg flex-shrink-0">Send</button>
+                </form>
+            </div>
+            
+            <div class="container mx-auto mt-16">
+                <div class="divider" style="margin-bottom: var(--footer-divider-margin-bottom);">
+                    <img src="/assets/images/Clipped_image_20250816_104657.png" alt="Rotating Star" class="rotating-star w-8 h-8" onerror="this.style.display='none'">
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 text-sm">&copy; 2026 Starfell Harbor. All Rights Reserved.</p>
+                    <a href={`/${frontmatter.category || ''}`} class="text-gray-600 hover:text-gray-900 text-sm">Back to Category Hub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <script is:inline src="/assets/js/main.js"></script>
+    <!-- Add this right above </body> -->
+    <script is:inline>
+        function scrollSlider(direction) {
+            const container = document.getElementById('slider-container');
+            if (container) {
+                const scrollAmount = container.clientWidth;
+                container.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+</body>
+</html>

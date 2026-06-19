@@ -1,27 +1,43 @@
-🌟 Starfell Harbor
-==================
+# Astro Starter Kit: Minimal
 
-Welcome to **Starfell Harbor** -- my small corner of the internet.
+```sh
+npm create astro@latest -- --template minimal
+```
 
-I've built this personal blog to share my writings on **cybersecurity, technology, and personal thoughts**. It's a space where I explore both technical topics and casual reflections.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-🔗 **Live Blog:** [starfellharbor.mooo.com](https://starfellharbor.mooo.com)
+## 🚀 Project Structure
 
-🌐 About the Site
------------------
+Inside of your Astro project, you'll see the following folders and files:
 
--   Works best on **desktops** (mobile version is still in progress).
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
--   Clean, minimal layout focused on **readability**.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
--   Sections include:
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-    -   🛡️ **Cybersecurity** -- posts about security concepts, tools, and real-world applications.
+Any static assets, like images, can be placed in the `public/` directory.
 
-    -   ⚙️ **Technology** -- explorations of how things work, tutorials, and experiments.
+## 🧞 Commands
 
-    -   ✨ **Personal Writings** -- my reflections, thoughts, and ideas outside tech.
+All commands are run from the root of the project, from a terminal:
 
-The site is still evolving, so expect improvements over time. Thanks for stopping by and checking it out!
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-<img width="1920" height="906" alt="starfellharbor netlify app-Starfell Harbor - A Personal Blog-cvscreenshot" src="https://github.com/user-attachments/assets/10b3e519-e8d2-420c-93e9-0640d8f04b19" />
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

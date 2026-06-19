@@ -1,0 +1,25 @@
+# Build compilation outputs
+dist/
+resources/
+
+# Native generated Astro configurations
+.astro/
+
+# Dependencies tree
+node_modules/
+
+# Standard process logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment configurations
+.env
+.env.production
+*.local
+
+# System/IDE environments
+.DS_Store
+.idea/
+.vscode/

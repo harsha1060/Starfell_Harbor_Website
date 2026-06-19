@@ -1,5 +1,10 @@
 starfellharbor.mooo.com {
     root * /usr/share/caddy
-    file_server
+    file_server {
+        precompressed gzip
+    }
     encode gzip
+
+    # Graceful handling for non-trailing slash assets or virtual routes
+    try_files {path} {path}/ /index.html
 }
