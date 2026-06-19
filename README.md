@@ -4,6 +4,8 @@ Welcome to the repository for **Starfell Harbor** — a personal blog dedicated 
 
 [starfellharbor.mooo.com](https://starfellharbor.mooo.com)
 
+![Starfell Harbor](home_page.png)
+
 This project is built using a modern, lightning-fast Static Site Generator (SSG) architecture that compiles raw Markdown content into optimized static pages.
 
 ## Features
