@@ -63,4 +63,4 @@ woowwww.... the username and password in plain text, of course the user is root 
 
 I switched to root user with `su root` and finally got the root.txt
 
-In my prev rooms I used AI or write-ups to solve the room but in this room it's purely me, including the write-up it's **mememe** 😂?
+In my prev rooms I used AI or write-ups to solve the room but in this room it's purely me, including the write-up it's **mememe** 😂
