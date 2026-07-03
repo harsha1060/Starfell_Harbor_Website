@@ -7,8 +7,6 @@ author: "Harsha"
 category: "cyber"
 ---
 
-# TryHackMe: Dreaming Room Walkthrough (Easy)
-
 ## Introduction
 
 **Dreaming** is a fantastic, beginner-friendly room on TryHackMe that tests your web enumeration skills, database manipulation knowledge, and ability to exploit misconfigured Python libraries for privilege escalation.
