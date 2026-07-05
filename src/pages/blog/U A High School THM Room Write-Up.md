@@ -11,8 +11,8 @@ category: "cyber"
 
 Hi guys I'm here with another crazy write-up
 
-room name: U A High School
-room difficulty: EASY
+Room name: U A High School
+Room difficulty: EASY
 
 I should solve some non-easy rooms ey😅, anyway we got the IP with a description of mostly nothing.
 
